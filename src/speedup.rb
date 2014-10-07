@@ -35,22 +35,26 @@ module SpeedUp
 
 
   def self.profile(&block)
+    Sketchup.status_text = "Profiling..."
     result = RubyProf.profile do
       yield
     end
 
+    Sketchup.status_text = "Generating graph report..."
     graph_report = File.join(Sketchup.temp_dir, 'profup-graph.html')
     File.open(graph_report, 'w') { |file|
       printer = RubyProf::GraphHtmlPrinter.new(result)
       printer.print(file)
     }
 
+    Sketchup.status_text = "Generating callstack report..."
     callstack_report = File.join(Sketchup.temp_dir, 'profup-callstack.html')
     File.open(callstack_report, 'w') { |file|
       printer = CallStackPrinter.new(result)
       printer.print(file)
     }
 
+    Sketchup.status_text = "Profiling done!"
     jquery = File.join("C:/Users/Thomas/SourceTree/SUbD/Ruby/profiling", "jquery-1.11.1.js")
     html = <<-EOT
     <!DOCTYPE html>
