@@ -3,7 +3,7 @@ require "ruby-prof"
 require "stringio"
 
 
-module ProfUp
+module SpeedUp
 
   class CallStackPrinter < RubyProf::CallStackPrinter
 
@@ -111,11 +111,11 @@ module ProfUp
 
     options = {
       :dialog_title => "Profiling Results",
-      :preferences_key => 'ProfUpProfiling',
+      :preferences_key => 'SpeedUpProfiling',
       :scrollable => true,
       :resizable => true,
-      :height => 300,
-      :width => 400,
+      :height => 400,
+      :width => 600,
       :left => 200,
       :top => 200
     }
@@ -141,20 +141,3 @@ module ProfUp
   end
 
 end # module
-
-
-__END__
-
-
-require "SUbD/core.rb"
-
-SUbD = TT::Plugins::SUbD
-filename = File.join(SUbD::PATH_GL_TEXT, "0.bmp")
-
-ProfUp.profile do
-  SUbD::ImageBMP.new(filename)
-end
-
-
-
-
