@@ -104,7 +104,7 @@ module SpeedUp
     }
 
     Sketchup.status_text = "Profiling done!"
-    jquery = File.join(__dir__, "jquery-1.11.1.js")
+    jquery = File.join(__dir__, "js", "jquery.js")
     html = <<-EOT
     <!DOCTYPE html>
     <html>
