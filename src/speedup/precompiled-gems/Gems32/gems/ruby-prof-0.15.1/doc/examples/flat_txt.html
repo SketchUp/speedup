@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>flat - ruby-prof</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../README_rdoc.html">README</a>
+  
+    <li><a href="../examples/flat_txt.html">flat</a>
+  
+    <li><a href="../examples/graph_html.html">graph.html</a>
+  
+    <li><a href="../examples/graph_txt.html">graph</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page examples/flat.txt">
+
+<h1 id="label-Flat+Profiles">Flat Profiles<span><a href="#label-Flat+Profiles">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Flat profiles show the total amount of time spent in each method. As an
+example, here is the output from running printers_test.rb.</p>
+
+<p>Thread ID: 21277412</p>
+
+<pre>%self  cumulative  total     self   children  calls self/call total/call  name
+46.34     4.06      8.72     4.06     4.66      501     0.01     0.02     Integer#upto
+23.89     6.16      2.09     2.09     0.00       61     0.03     0.03     Kernel.sleep
+15.12     7.48      1.33     1.33     0.00   250862     0.00     0.00     Fixnum#%
+14.13     8.72      1.24     1.24     0.00   250862     0.00     0.00     Fixnum#==
+ 0.18     8.74      0.02     0.02     0.00        1     0.02     0.02     Array#each_index
+ 0.17     8.75      6.64     0.01     6.63      500     0.00     0.01     Object#is_prime
+ 0.17     8.77      6.66     0.01     6.64        1     0.01     6.66     Array#select
+ 0.00     8.77      0.00     0.00     0.00      501     0.00     0.00     Fixnum#-
+ 0.00     8.77      0.00     0.00     0.00        1     0.00     0.00     Array#first
+ 0.00     8.77      0.00     0.00     0.00        1     0.00     0.00     Array#length
+ 0.00     8.77      0.00     0.00     0.00        1     0.00     0.00     Array#initialize
+ 0.00     8.77      8.77     0.00     8.77        1     0.00     8.77     Object#run_primes
+ 0.00     8.77      0.00     0.00     0.00        1     0.00     0.00     Integer#to_int
+ 0.00     8.77      6.66     0.00     6.66        1     0.00     6.66     Object#find_primes
+ 0.00     8.77      2.09     0.00     2.09        1     0.00     2.09     Object#find_largest
+ 0.00     8.77      0.02     0.00     0.02        1     0.00     0.02     Object#make_random_array
+ 0.00     8.77      0.00     0.00     0.00        1     0.00     0.00     Class#new
+ 0.00     8.77      0.00     0.00     0.00      500     0.00     0.00     Array#[]=
+ 0.00     8.77      0.00     0.00     0.00       61     0.00     0.00     Fixnum#&gt;
+ 0.00     8.77      0.00     0.00     0.00       61     0.00     0.00     Array#[]
+ 0.00     8.77      8.77     0.00     8.77        1     0.00     8.77     #toplevel
+ 0.00     8.77      0.00     0.00     0.00      500     0.00     0.00     Kernel.rand</pre>
+
+<p>All values are in seconds.</p>
+
+<p>The columns are:</p>
+
+<pre>      %self        - The percentage of time spent in this method, derived from self_time/total_time
+      cumulative   - The sum of the time spent in this method and all the methods listed above it.
+      total        - The time spent in this method and its children.
+      self         - The time spent in this method.
+      children     - The time spent in this method's children.
+      calls        - The number of times this method was called.
+      self/call    - The average time spent per call in this method.
+total/call   - The average time spent per call in this method and its children.
+name         - The name of the method.</pre>
+
+<p>Methods are sorted based on %self, therefore the methods that execute the
+longest are listed first.</p>
+
+<p>The interpretation of method names is:</p>
+<ul><li>
+<p>toplevel - The root method that calls all other methods</p>
+</li><li>
+<p>MyObject#test - An instance method “test” of the class “MyObject”</p>
+</li><li>
+<p>&lt;Object:MyObject&gt;#test - The &lt;&gt; characters indicate a singleton
+method on a singleton class.</p>
+</li></ul>
+
+<p>For example, wee can see that Integer#upto took the most time, 4.06
+seconds.  An additional 4.66 seconds were spent in its children, for a
+total time of 8.72 seconds.</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,618 @@
+have_func: checking for rb_gc_stat()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return 0;
+8: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_stat' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_stat; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_stat' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cc1koJJD.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_stat'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_stat(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_count()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_count' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_count; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_count' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cc1HgqKr.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_count'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_count(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_os_allocated_objects()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_os_allocated_objects' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_os_allocated_objects' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cchDWKxe.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_os_allocated_objects'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_os_allocated_objects(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_allocated_size()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_allocated_size' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_allocated_size' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\ccjzcOV7.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_allocated_size'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_allocated_size(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_collections()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_collections' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_collections' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cchRaqvT.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_collections'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_collections(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_time()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_time' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_time' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\ccjbLi9X.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_time'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_time(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_time()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_total_time' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_time; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_total_time' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cc2J1oCU.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_total_time'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_total_time(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_mallocs()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_total_mallocs' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_mallocs; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_total_mallocs' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cccwwMFJ.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_total_mallocs'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_total_mallocs(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_malloced_bytes()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_total_malloced_bytes' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_malloced_bytes; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_total_malloced_bytes' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\ccC8HBFB.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_total_malloced_bytes'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_total_malloced_bytes(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_heap_total_mem()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_heap_total_mem' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_heap_total_mem' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\ccSvucKt.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_heap_total_mem'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_heap_total_mem(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_heap_info()... -------------------- no
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_gc_heap_info' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:8:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/Ruby200/include/ruby-2.0.0/i386-mingw32 -IC:/Ruby200/include/ruby-2.0.0/ruby/backward -IC:/Ruby200/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/Ruby200/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_gc_heap_info' [-Wimplicit-function-declaration]
+C:\Users\Thomas\AppData\Local\Temp\cc0Y5eji.o: In function `t':
+C:\Ruby200\lib\ruby\gems\2.0.0\gems\ruby-prof-0.15.1\ext\ruby_prof/conftest.c:8: undefined reference to `rb_gc_heap_info'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_gc_heap_info(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
