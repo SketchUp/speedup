@@ -1,5 +1,8 @@
 gem "ruby-prof"
 require "ruby-prof"
+
+require "benchmark"
+require "set"
 require "stringio"
 
 
@@ -31,6 +34,18 @@ module SpeedUp
         instance.send(profile_method)
       end
       instance.send(:teardown)
+    end
+
+    def self.benchmark
+      instance = self.new
+      label_size = tests.map { |t| t.to_s.size }.max
+      Benchmark.bm(label_size) do |x|
+        self.each_test_with_name { |method, name|
+          instance.send(:setup)
+          x.report(name)   { instance.send(method) }
+          instance.send(:teardown)
+        }
+      end
     end
 
     def setup; end
