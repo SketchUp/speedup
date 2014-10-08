@@ -157,8 +157,9 @@ module SpeedUp
       :left => 200,
       :top => 200
     }
-    @window = UI::WebDialog.new(options)
-    @window.add_action_callback("file") { |dialog, params|
+    @windows ||= Set.new
+    window = UI::WebDialog.new(options)
+    window.add_action_callback("file") { |dialog, params|
       puts "Callback('file'): #{params}"
       if params.include?('<main>')
         puts "Evaluated content. Cannot open file."
@@ -174,8 +175,14 @@ module SpeedUp
         system(command)
       end
     }
-    @window.set_file(report)
-    @window.show
+    window.set_on_close {
+      # Allow window to be garbage collected.
+      @windows.delete(window)
+      window = nil
+    }
+    window.set_file(report)
+    window.show
+    @windows << window
   end
 
 end # module
