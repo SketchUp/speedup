@@ -1,0 +1,47 @@
+# Windows System Files
+Thumbs.db
+
+# Visual Studio
+*.aps
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.VC.db
+ipch/
+Debug*/
+Release*/
+Test/
+
+# Visual Studio Code
+*.VC*
+
+# OSX System Files
+.DS_Store
+
+# Xcode
+# http://stackoverflow.com/a/12021580/486990
+*~.nib
+*.swp
+DerivedData/
+xcuserdata
+*.xccheckout
+*.xcscmblueprint
+
+# SublimeText
+*.sublime-workspace
+
+# RubyMine
+.idea/workspace.xml
+.idea/dictionaries
+
+# Ruby Binaries
+*.so
+*.bundle
+
+# SketchUp Backup Files
+*.skb
+AutoSave_*.skp
+
+# Layout Backup Files
+Backup of *.layout
