@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Table of Contents - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" class="table-of-contents">
+<main role="main">
+<h1 class="class">Table of Contents - ruby-prof</h1>
+
+<h2 id="pages">Pages</h2>
+<ul>
+  <li class="file">
+    <a href="LICENSE.html">LICENSE</a>
+  </li>
+    <li class="file">
+    <a href="README_rdoc.html">README</a>
+
+    <ul>
+      <li><a href="README_rdoc.html#label-ruby-prof">ruby-prof</a>
+      <li><a href="README_rdoc.html#label-Overview">Overview</a>
+      <li><a href="README_rdoc.html#label-Requirements">Requirements</a>
+      <li><a href="README_rdoc.html#label-Install">Install</a>
+      <li><a href="README_rdoc.html#label-Usage">Usage</a>
+      <li><a href="README_rdoc.html#label-ruby-prof+Executable">ruby-prof Executable</a>
+      <li><a href="README_rdoc.html#label-ruby-prof+Convenience+API">ruby-prof Convenience API</a>
+      <li><a href="README_rdoc.html#label-Profiling+Selected+Threads+-28Core+API-29">Profiling Selected Threads (Core API)</a>
+      <li><a href="README_rdoc.html#label-Method+Elimination">Method Elimination</a>
+      <li><a href="README_rdoc.html#label-Profiling+Rails">Profiling Rails</a>
+      <li><a href="README_rdoc.html#label-Reports">Reports</a>
+      <li><a href="README_rdoc.html#label-Printers">Printers</a>
+      <li><a href="README_rdoc.html#label-Measurements">Measurements</a>
+      <li><a href="README_rdoc.html#label-Patching+ruby">Patching ruby</a>
+      <li><a href="README_rdoc.html#label-Measure+modes">Measure modes</a>
+      <li><a href="README_rdoc.html#label-Multi-threaded+Applications">Multi-threaded Applications</a>
+      <li><a href="README_rdoc.html#label-Performance">Performance</a>
+      <li><a href="README_rdoc.html#label-License">License</a>
+      <li><a href="README_rdoc.html#label-API+Documentation">API Documentation</a>
+      <li><a href="README_rdoc.html#label-Development">Development</a>
+    </ul>
+  </li>
+    <li class="file">
+    <a href="examples/flat_txt.html">flat</a>
+
+    <ul>
+      <li><a href="examples/flat_txt.html#label-Flat+Profiles">Flat Profiles</a>
+    </ul>
+  </li>
+    <li class="file">
+    <a href="examples/graph_html.html">graph.html</a>
+  </li>
+    <li class="file">
+    <a href="examples/graph_txt.html">graph</a>
+
+    <ul>
+      <li><a href="examples/graph_txt.html#label-Graph+Profiles">Graph Profiles</a>
+      <li><a href="examples/graph_txt.html#label-Overview">Overview</a>
+      <li><a href="examples/graph_txt.html#label-Parents">Parents</a>
+      <li><a href="examples/graph_txt.html#label-Children">Children</a>
+    </ul>
+  </li>
+  
+</ul>
+
+<h2 id="classes">Classes and Modules</h2>
+<ul>
+  <li class="module">
+    <a href="Rack.html">Rack</a>
+  </li>
+  <li class="class">
+    <a href="Rack/RubyProf.html">Rack::RubyProf</a>
+  </li>
+  <li class="module">
+    <a href="RubyProf.html">RubyProf</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/AbstractPrinter.html">RubyProf::AbstractPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/AggregateCallInfo.html">RubyProf::AggregateCallInfo</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/CallInfo.html">RubyProf::CallInfo</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/CallInfoPrinter.html">RubyProf::CallInfoPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/CallInfoVisitor.html">RubyProf::CallInfoVisitor</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/CallStackPrinter.html">RubyProf::CallStackPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/CallTreePrinter.html">RubyProf::CallTreePrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/Cmd.html">RubyProf::Cmd</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/DotPrinter.html">RubyProf::DotPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/FlatPrinter.html">RubyProf::FlatPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/FlatPrinterWithLineNumbers.html">RubyProf::FlatPrinterWithLineNumbers</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/GraphHtmlPrinter.html">RubyProf::GraphHtmlPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/GraphPrinter.html">RubyProf::GraphPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/MethodInfo.html">RubyProf::MethodInfo</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/MultiPrinter.html">RubyProf::MultiPrinter</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/Profile.html">RubyProf::Profile</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/ProfileTask.html">RubyProf::ProfileTask</a>
+  </li>
+  <li class="class">
+    <a href="RubyProf/Thread.html">RubyProf::Thread</a>
+  </li>
+</ul>
+
+<h2 id="methods">Methods</h2>
+<ul>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-cpu_frequency">::cpu_frequency</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-exclude_threads">::exclude_threads</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-exclude_threads-3D">::exclude_threads=</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-figure_measure_mode">::figure_measure_mode</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_allocations">::measure_allocations</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_cpu_time">::measure_cpu_time</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_gc_runs">::measure_gc_runs</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_gc_time">::measure_gc_time</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_memory">::measure_memory</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_mode">::measure_mode</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_mode-3D">::measure_mode=</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_mode_string">::measure_mode_string</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_process_time">::measure_process_time</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-measure_wall_time">::measure_wall_time</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfoVisitor.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfoVisitor</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/DotPrinter.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::DotPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="Rack/RubyProf.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">Rack::RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-pause">::pause</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-c-profile">::profile</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-profile">::profile</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-resume">::resume</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-c-roots_of">::roots_of</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-running-3F">::running?</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-start">::start</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-start_script">::start_script</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf.html#method-c-stop">::stop</a>
+    &mdash;
+    <span class="container">RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-3C-3D-3E">#&lt;=&gt;</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-aggregate_children">#aggregate_children</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-aggregate_parents">#aggregate_parents</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-application">#application</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-arguments">#arguments</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-base64_image">#base64_image</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-base_name">#base_name</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="Rack/RubyProf.html#method-i-call">#call</a>
+    &mdash;
+    <span class="container">Rack::RubyProf</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-call_sequence">#call_sequence</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-called">#called</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-called">#called</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-children">#children</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-children">#children</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-children_time">#children_time</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-children_time">#children_time</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-children_time">#children_time</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-i-clean_output_directory">#clean_output_directory</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-color">#color</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-convert">#convert</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-create_link">#create_link</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-i-create_output_directory">#create_output_directory</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-i-define">#define</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-descendent_of">#descendent_of</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Thread.html#method-i-detect_recursion">#detect_recursion</a>
+    &mdash;
+    <span class="container">RubyProf::Thread</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-detect_recursion">#detect_recursion</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-detect_recursion">#detect_recursion</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-determine_event_specification_and_value_scale">#determine_event_specification_and_value_scale</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-dump">#dump</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-eliminate-21">#eliminate!</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-eliminate-21">#eliminate!</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-eliminate_methods-21">#eliminate_methods!</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-expansion">#expansion</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-file">#file</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-file_link">#file_link</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-file_name_for_thread">#file_name_for_thread</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-file_path_for_thread">#file_path_for_thread</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-find_call">#find_call</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-i-flat_profile">#flat_profile</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-graph_link">#graph_link</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-i-graph_profile">#graph_profile</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-inspect">#inspect</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-line">#line</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-link">#link</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-load_pre_execs">#load_pre_execs</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-load_pre_libs">#load_pre_libs</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-merge_call_tree">#merge_call_tree</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-method_href">#method_href</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-method_href">#method_href</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-method_name">#method_name</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-min_depth">#min_depth</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-min_percent">#min_percent</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-name">#name</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-open_asset">#open_asset</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-option_parser">#option_parser</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-i-output_directory">#output_directory</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-parent">#parent</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-parents">#parents</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-parse_args">#parse_args</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-path">#path</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-pause">#pause</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-paused-3F">#paused?</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-post_process">#post_process</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/DotPrinter.html#method-i-print">#print</a>
+    &mdash;
+    <span class="container">RubyProf::DotPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_commands">#print_commands</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_css">#print_css</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print_file">#print_file</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print_footer">#print_footer</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_footer">#print_footer</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print_header">#print_header</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_header">#print_header</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-print_headers">#print_headers</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_help">#print_help</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_java_script">#print_java_script</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-print_method">#print_method</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/FlatPrinterWithLineNumbers.html#method-i-print_methods">#print_methods</a>
+    &mdash;
+    <span class="container">RubyProf::FlatPrinterWithLineNumbers</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_stack">#print_stack</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-print_thread">#print_thread</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print_thread">#print_thread</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-print_threads">#print_threads</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-print_threads">#print_threads</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-print_title_bar">#print_title_bar</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-recursive-3F">#recursive?</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallTreePrinter.html#method-i-remove_subsidiary_files_from_previous_profile_runs">#remove_subsidiary_files_from_previous_profile_runs</a>
+    &mdash;
+    <span class="container">RubyProf::CallTreePrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-resume">#resume</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-root-3F">#root?</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-root-3F">#root?</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-run">#run</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/ProfileTask.html#method-i-run_script">#run_script</a>
+    &mdash;
+    <span class="container">RubyProf::ProfileTask</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-running-3F">#running?</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-self_time">#self_time</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-self_time">#self_time</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Cmd.html#method-i-setup_options">#setup_options</a>
+    &mdash;
+    <span class="container">RubyProf::Cmd</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-setup_options">#setup_options</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-setup_options">#setup_options</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AbstractPrinter.html#method-i-sort_method">#sort_method</a>
+    &mdash;
+    <span class="container">RubyProf::AbstractPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/FlatPrinter.html#method-i-sort_method">#sort_method</a>
+    &mdash;
+    <span class="container">RubyProf::FlatPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-stack">#stack</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-i-stack_profile">#stack_profile</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-start">#start</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-stop">#stop</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-sum">#sum</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-target">#target</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/GraphHtmlPrinter.html#method-i-template">#template</a>
+    &mdash;
+    <span class="container">RubyProf::GraphHtmlPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/Profile.html#method-i-threads">#threads</a>
+    &mdash;
+    <span class="container">RubyProf::Profile</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-threshold">#threshold</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-title">#title</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfo.html#method-i-to_s">#to_s</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-to_s">#to_s</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-to_s">#to_s</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Thread.html#method-i-top_call_infos">#top_call_infos</a>
+    &mdash;
+    <span class="container">RubyProf::Thread</span>
+
+  <li class="method">
+    <a href="RubyProf/Thread.html#method-i-top_methods">#top_methods</a>
+    &mdash;
+    <span class="container">RubyProf::Thread</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-total_time">#total_time</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/CallStackPrinter.html#method-i-total_time">#total_time</a>
+    &mdash;
+    <span class="container">RubyProf::CallStackPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-total_time">#total_time</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Thread.html#method-i-total_time">#total_time</a>
+    &mdash;
+    <span class="container">RubyProf::Thread</span>
+
+  <li class="method">
+    <a href="RubyProf/MultiPrinter.html#method-i-tree_profile">#tree_profile</a>
+    &mdash;
+    <span class="container">RubyProf::MultiPrinter</span>
+
+  <li class="method">
+    <a href="RubyProf/CallInfoVisitor.html#method-i-visit">#visit</a>
+    &mdash;
+    <span class="container">RubyProf::CallInfoVisitor</span>
+
+  <li class="method">
+    <a href="RubyProf/MethodInfo.html#method-i-wait_time">#wait_time</a>
+    &mdash;
+    <span class="container">RubyProf::MethodInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/AggregateCallInfo.html#method-i-wait_time">#wait_time</a>
+    &mdash;
+    <span class="container">RubyProf::AggregateCallInfo</span>
+
+  <li class="method">
+    <a href="RubyProf/Thread.html#method-i-wait_time">#wait_time</a>
+    &mdash;
+    <span class="container">RubyProf::Thread</span>
+</ul>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
