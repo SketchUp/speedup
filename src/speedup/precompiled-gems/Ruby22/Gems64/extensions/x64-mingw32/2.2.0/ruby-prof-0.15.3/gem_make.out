@@ -1,0 +1,43 @@
+current directory: C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/ruby-prof-0.15.3/ext/ruby_prof
+C:/Ruby22-x64/bin/ruby.exe -r ./siteconf20161201-9520-1d2ceso.rb extconf.rb
+checking for rb_gc_stat()... yes
+checking for rb_gc_count()... yes
+checking for rb_os_allocated_objects()... no
+checking for rb_gc_allocated_size()... no
+checking for rb_gc_collections()... no
+checking for rb_gc_time()... no
+checking for rb_gc_total_time()... no
+checking for rb_gc_total_mallocs()... no
+checking for rb_gc_total_malloced_bytes()... no
+checking for rb_heap_total_mem()... no
+checking for rb_gc_heap_info()... no
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  C:/Ruby22-x64/lib/ruby/gems/2.2.0/extensions/x64-mingw32/2.2.0/ruby-prof-0.15.3/mkmf.log
+
+current directory: C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/ruby-prof-0.15.3/ext/ruby_prof
+make "DESTDIR=" clean
+
+current directory: C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/ruby-prof-0.15.3/ext/ruby_prof
+make "DESTDIR="
+generating ruby_prof-x64-mingw32.def
+compiling rp_call_info.c
+compiling rp_measure.c
+compiling rp_measure_allocations.c
+compiling rp_measure_cpu_time.c
+compiling rp_measure_gc_runs.c
+compiling rp_measure_gc_time.c
+compiling rp_measure_memory.c
+compiling rp_measure_process_time.c
+compiling rp_measure_wall_time.c
+compiling rp_method.c
+compiling rp_stack.c
+compiling rp_thread.c
+compiling ruby_prof.c
+linking shared-object ruby_prof.so
+
+current directory: C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/ruby-prof-0.15.3/ext/ruby_prof
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_prof.so ./.gem.20161201-9520-1u7kjbd
