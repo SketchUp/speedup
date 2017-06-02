@@ -36,8 +36,8 @@ xcuserdata
 .idea/dictionaries
 
 # Ruby Binaries
-*.so
-*.bundle
+# *.so
+# *.bundle
 
 # SketchUp Backup Files
 *.skb
