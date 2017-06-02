@@ -1,3 +1,4 @@
+gem 'ruby-prof'
 require "ruby-prof"
 
 require "benchmark"
@@ -84,9 +85,19 @@ module SpeedUp
 
   def self.profile(&block)
     Sketchup.status_text = "Profiling..."
-    result = RubyProf.profile do
-      yield
-    end
+    # RubyProf.exclude_threads = Thread.list.select{ |t| t != Thread.current }
+    options = {
+      include_threads: [Thread.current],
+      merge_fibers: true
+    }
+    profiler = RubyProf::Profile.new(options)
+    profiler.start
+    yield
+    result = profiler.stop
+    # result = RubyProf.profile do
+    # result = profiler.profile do
+    #   yield
+    # end
 
     Sketchup.status_text = "Generating graph report..."
     graph_report = File.join(Sketchup.temp_dir, 'profup-graph.html')
