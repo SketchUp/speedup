@@ -85,9 +85,11 @@ module SpeedUp
 
   def self.profile(&block)
     Sketchup.status_text = "Profiling..."
+    # trace_file = File.join(Sketchup.temp_dir, 'profup-graph.html')
+    # ENV['RUBY_PROF_TRACE'] = trace_file
     # RubyProf.exclude_threads = Thread.list.select{ |t| t != Thread.current }
     options = {
-      include_threads: [Thread.current],
+      # include_threads: [Thread.current],
       merge_fibers: true
     }
     profiler = RubyProf::Profile.new(options)
