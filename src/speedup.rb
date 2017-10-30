@@ -1,13 +1,19 @@
-gem 'ruby-prof'
-require "ruby-prof"
+begin
+  gem 'ruby-prof'
+  require "ruby-prof"
+rescue LoadError => error
+  puts 'SpeedUp was unable to load ruby-prof'
+end
 
 require "benchmark"
+require "fileutils"
 require "set"
 require "stringio"
 
+require 'sketchup.rb'
+
 
 module SpeedUp
-
 
   class ProfileTest
 
@@ -80,7 +86,7 @@ module SpeedUp
       end_css
     end
 
-  end #class
+  end if defined?(RubyProf) #class
 
 
   def self.profile(&block)
@@ -243,6 +249,48 @@ module SpeedUp
     klasses.select { |klass|
       klass.ancestors.include?(SpeedUp::ProfileTest)
     }
+  end
+
+
+  def self.setup
+    puts 'Setting up SpeedUp...'
+
+    puts 'Installing pre-compiled rubo-prof...'
+
+    puts '> Checking for compatible version...'
+    precompiled_path = File.join(__dir__, 'speedup', 'precompiled-gems')
+    ruby_version = RUBY_VERSION.split('.')[0, 2].join
+    ruby_path = File.join(precompiled_path, "Ruby#{ruby_version}")
+    gems_source = File.join(ruby_path, "Gems#{POINTER_SIZE}")
+    puts "> Source: #{gems_source} (Exists: #{File.exists?(gems_source)})"
+
+    destination = Gem.dir
+    puts "> Target: #{destination} (Exists: #{File.exists?(destination)})"
+
+    puts '> Installing...'
+    Sketchup::Console.send(:public, :puts)
+    FileUtils.copy_entry(gems_source, destination, preserve = false)
+
+    puts 'Done! (Restart SketchUp for changes to take effect)'
+  end
+
+
+  POINTER_SIZE = ['a'].pack('P').size * 8
+
+  @ruby_prof_loaded = defined?(RubyProf)
+
+
+  unless file_loaded?(__FILE__)
+    menu = UI.menu('Plugins').add_submenu('SpeedUp')
+
+    id = menu.add_item('Setup') {
+      self.setup
+    }
+    menu.set_validation_proc(id) {
+      @ruby_prof_loaded ? MF_GRAYED : MF_ENABLED
+    }
+
+    file_loaded(__FILE__)
   end
 
 end # module
