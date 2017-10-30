@@ -271,7 +271,17 @@ module SpeedUp
     Sketchup::Console.send(:public, :puts)
     FileUtils.copy_entry(gems_source, destination, preserve = false)
 
-    puts 'Done! (Restart SketchUp for changes to take effect)'
+    begin
+      puts '> Loading...'
+      Gem.clear_paths
+      gem 'ruby-prof'
+      require 'ruby-prof'
+    ensure
+      puts 'Done! (Restart SketchUp for changes to take effect)'
+    end
+
+    @ruby_prof_loaded = defined?(RubyProf)
+
   end
 
 
