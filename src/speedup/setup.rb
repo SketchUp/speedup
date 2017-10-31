@@ -1,4 +1,4 @@
-require "fileutils"
+require 'fileutils'
 
 require 'sketchup.rb'
 
@@ -8,6 +8,8 @@ module SpeedUp
   POINTER_SIZE = ['a'].pack('P').size * 8
 
   def self.setup
+    SKETCHUP_CONSOLE.show
+
     puts 'Setting up SpeedUp...'
 
     puts 'Installing pre-compiled rubo-prof...'

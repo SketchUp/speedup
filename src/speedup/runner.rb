@@ -1,4 +1,4 @@
-require "set"
+require 'set'
 
 require 'speedup/callstack_printer'
 require 'speedup/profile_test'

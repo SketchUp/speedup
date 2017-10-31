@@ -1,4 +1,4 @@
-require "benchmark"
+require 'benchmark'
 
 
 module SpeedUp
@@ -6,7 +6,7 @@ module SpeedUp
   class ProfileTest
 
     def self.test_name
-      self.name.split("::").last.match(/(?:PR_)?(.+)/)[1]
+      self.name.split('::').last.match(/(?:PR_)?(.+)/)[1]
     end
 
     def self.tests
@@ -16,7 +16,7 @@ module SpeedUp
     def self.each_test_with_name(&block)
       self.tests.each { |method|
         name = method.to_s.match(/profile_(.+)/)[1]
-        name.tr!("_", " ")
+        name.tr!('_', ' ')
         yield(method, name)
       }
     end
