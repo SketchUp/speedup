@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>graph.html - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../README_rdoc.html">README</a>
+  
+    <li><a href="../examples/flat_txt.html">flat</a>
+  
+    <li><a href="../examples/graph_html.html">graph.html</a>
+  
+    <li><a href="../examples/graph_txt.html">graph</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page examples/graph.html">
+
+<p>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a
+href="http://www.w3.org/TR/html4/strict.dtd">www.w3.org/TR/html4/strict.dtd</a>”&gt;
+&lt;html&gt; &lt;head&gt; &lt;style media=“all” type=“text/css”&gt;</p>
+
+<pre>  table {
+          border-collapse: collapse;
+          border: 1px solid #CCC;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 9pt;
+          line-height: normal;
+  }
+
+  th {
+          text-align: center;
+          border-top: 1px solid #FB7A31;
+          border-bottom: 1px solid #FB7A31;
+          background: #FFC;
+          padding: 0.3em;
+          border-left: 1px solid silver;
+  }
+
+              tr.break td {
+                border: 0;
+          border-top: 1px solid #FB7A31;
+                      padding: 0;
+                      margin: 0;
+              }
+
+  tr.method td {
+                      font-weight: bold;
+  }
+
+  td {
+          padding: 0.3em;
+  }
+
+  td:first-child {
+          width: 190px;
+          }
+
+  td {
+          border-left: 1px solid #CCC;
+          text-align: center;
+  }
+&lt;/style&gt;</pre>
+
+<p>&lt;/head&gt; &lt;body&gt; &lt;h1&gt; Graph Profile&lt;/h1&gt;
+&lt;p&gt;Graph profiles show how long each method runs, which methods call
+it</p>
+
+<pre>and which methods it calls. To understand how to read a graph profile, refer to
+ the &lt;a href=&quot;graph.txt&quot;&gt;documentation&lt;/a&gt; for the text graph report. &lt;/p&gt;</pre>
+
+<p>&lt;p&gt;The main advantage of an HTML graph format versus the text format
+is the use of</p>
+
+<pre class="ruby"><span class="ruby-identifier">hyperlinks</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">jump</span> <span class="ruby-identifier">between</span> <span class="ruby-identifier">methods</span>. <span class="ruby-constant">This</span> <span class="ruby-identifier">makes</span> <span class="ruby-identifier">it</span> <span class="ruby-identifier">easier</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">understand</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">flow</span>
+</pre>
+
+<p>of control through a program and which methods take the most
+time.&lt;/p&gt; &lt;p&gt;Below is the  output from running printers_test.rb
+reproduced in HTML. &lt;/p&gt; &lt;p&gt;Profile Report&lt;/p&gt;</p>
+
+<p>&lt;table&gt;</p>
+
+<pre>&lt;tr&gt;
+  &lt;th&gt;Thread ID&lt;/th&gt;
+  &lt;th&gt;Total Time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&lt;a href=&quot;#21277412&quot;&gt;21277412&lt;/a&gt;&lt;/td&gt;
+  &lt;td&gt;8.766&lt;/td&gt;
+&lt;/tr&gt;</pre>
+
+<p>&lt;/table&gt;</p>
+
+<p>&lt;h2&gt;&lt;a name=“21277412”&gt;Thread 21277412&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;</p>
+
+<pre>&lt;tr&gt;
+  &lt;th&gt; %Total&lt;/th&gt;
+  &lt;th&gt; %Self&lt;/th&gt;
+  &lt;th&gt; Total&lt;/th&gt;
+  &lt;th&gt; Self&lt;/th&gt;
+  &lt;th&gt; Children&lt;/th&gt;
+  &lt;th&gt; Calls&lt;/th&gt;
+  &lt;th&gt;Name&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 100.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;_toplevel_21277412&quot;&gt;#toplevel&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_run_primes_21277412&quot;&gt;Object#run_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#_toplevel_21277412&quot;&gt;#toplevel&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 100.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 8.77&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Object_run_primes_21277412&quot;&gt;Object#run_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_make_random_array_21277412&quot;&gt;Object#make_random_array&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_primes_21277412&quot;&gt;Object#find_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.63&lt;/td&gt;
+  &lt;td&gt; 4.06&lt;/td&gt;
+  &lt;td&gt; 2.56&lt;/td&gt;
+  &lt;td&gt; 500/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_is_prime_21277412&quot;&gt;Object#is_prime&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 1/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 99.48%&lt;/td&gt;
+  &lt;td&gt; 46.34%&lt;/td&gt;
+  &lt;td&gt; 8.72&lt;/td&gt;
+  &lt;td&gt; 4.06&lt;/td&gt;
+  &lt;td&gt; 4.66&lt;/td&gt;
+  &lt;td&gt; 501&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_[]_21277412&quot;&gt;Array#[]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Fixnum_&gt;_21277412&quot;&gt;Fixnum#_&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Kernel_sleep_21277412&quot;&gt;Kernel.sleep&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862/250862&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Fixnum____21277412&quot;&gt;Fixnum#==&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862/250862&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Fixnum_%_21277412&quot;&gt;Fixnum#%&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_primes_21277412&quot;&gt;Object#find_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 75.93%&lt;/td&gt;
+  &lt;td&gt; 0.17%&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_select_21277412&quot;&gt;Array#select&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.63&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_is_prime_21277412&quot;&gt;Object#is_prime&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_run_primes_21277412&quot;&gt;Object#run_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 75.93%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Object_find_primes_21277412&quot;&gt;Object#find_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.66&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_select_21277412&quot;&gt;Array#select&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.63&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_select_21277412&quot;&gt;Array#select&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 75.76%&lt;/td&gt;
+  &lt;td&gt; 0.17%&lt;/td&gt;
+  &lt;td&gt; 6.64&lt;/td&gt;
+  &lt;td&gt; 0.01&lt;/td&gt;
+  &lt;td&gt; 6.63&lt;/td&gt;
+  &lt;td&gt; 500&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Object_is_prime_21277412&quot;&gt;Object#is_prime&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Fixnum_-_21277412&quot;&gt;Fixnum#-&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 6.63&lt;/td&gt;
+  &lt;td&gt; 4.06&lt;/td&gt;
+  &lt;td&gt; 2.56&lt;/td&gt;
+  &lt;td&gt; 500/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_run_primes_21277412&quot;&gt;Object#run_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 23.89%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Fixnum_-_21277412&quot;&gt;Fixnum#-&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 1/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_first_21277412&quot;&gt;Array#first&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_length_21277412&quot;&gt;Array#length&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 23.89%&lt;/td&gt;
+  &lt;td&gt; 23.89%&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 2.09&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Kernel_sleep_21277412&quot;&gt;Kernel.sleep&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862/250862&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 15.12%&lt;/td&gt;
+  &lt;td&gt; 15.12%&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 1.33&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Fixnum_%_21277412&quot;&gt;Fixnum#%&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862/250862&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 14.13%&lt;/td&gt;
+  &lt;td&gt; 14.13%&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 1.24&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 250862&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Fixnum____21277412&quot;&gt;Fixnum#==&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_run_primes_21277412&quot;&gt;Object#run_primes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.18%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Object_make_random_array_21277412&quot;&gt;Object#make_random_array&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_each_index_21277412&quot;&gt;Array#each_index&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Class_new_21277412&quot;&gt;Class#new&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_make_random_array_21277412&quot;&gt;Object#make_random_array&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.18%&lt;/td&gt;
+  &lt;td&gt; 0.18%&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.02&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_each_index_21277412&quot;&gt;Array#each_index&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Kernel_rand_21277412&quot;&gt;Kernel.rand&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_[]__21277412&quot;&gt;Array#[]=&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_is_prime_21277412&quot;&gt;Object#is_prime&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/501&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 501&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Fixnum_-_21277412&quot;&gt;Fixnum#-&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Kernel_rand_21277412&quot;&gt;Kernel.rand&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Integer_to_int_21277412&quot;&gt;Integer#to_int&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_first_21277412&quot;&gt;Array#first&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Class_new_21277412&quot;&gt;Class#new&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_initialize_21277412&quot;&gt;Array#initialize&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_find_largest_21277412&quot;&gt;Object#find_largest&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_length_21277412&quot;&gt;Array#length&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Object_make_random_array_21277412&quot;&gt;Object#make_random_array&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Class_new_21277412&quot;&gt;Class#new&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_initialize_21277412&quot;&gt;Array#initialize&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Fixnum_&gt;_21277412&quot;&gt;Fixnum#_&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61/61&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_upto_21277412&quot;&gt;Integer#upto&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 61&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_[]_21277412&quot;&gt;Array#[]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_each_index_21277412&quot;&gt;Array#each_index&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Array_[]__21277412&quot;&gt;Array#[]=&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500/500&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Array_each_index_21277412&quot;&gt;Array#each_index&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;method&quot;&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00%&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 500&lt;/td&gt;
+  &lt;td&gt;&lt;a name=&quot;Kernel_rand_21277412&quot;&gt;Kernel.rand&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 0.00&lt;/td&gt;
+  &lt;td&gt; 1/1&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;#Integer_to_int_21277412&quot;&gt;Integer#to_int&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class=&quot;break&quot;&gt;
+  &lt;td colspan=&quot;7&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;</pre>
+
+<p>&lt;/table&gt; &lt;/body&gt; &lt;/html&gt;</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

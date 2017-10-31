@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module RubyProf - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-cpu_frequency">::cpu_frequency</a>
+    
+    <li ><a href="#method-c-exclude_threads">::exclude_threads</a>
+    
+    <li ><a href="#method-c-exclude_threads-3D">::exclude_threads=</a>
+    
+    <li ><a href="#method-c-figure_measure_mode">::figure_measure_mode</a>
+    
+    <li ><a href="#method-c-measure_allocations">::measure_allocations</a>
+    
+    <li ><a href="#method-c-measure_cpu_time">::measure_cpu_time</a>
+    
+    <li ><a href="#method-c-measure_gc_runs">::measure_gc_runs</a>
+    
+    <li ><a href="#method-c-measure_gc_time">::measure_gc_time</a>
+    
+    <li ><a href="#method-c-measure_memory">::measure_memory</a>
+    
+    <li ><a href="#method-c-measure_mode">::measure_mode</a>
+    
+    <li ><a href="#method-c-measure_mode-3D">::measure_mode=</a>
+    
+    <li ><a href="#method-c-measure_mode_string">::measure_mode_string</a>
+    
+    <li ><a href="#method-c-measure_process_time">::measure_process_time</a>
+    
+    <li ><a href="#method-c-measure_wall_time">::measure_wall_time</a>
+    
+    <li ><a href="#method-c-pause">::pause</a>
+    
+    <li ><a href="#method-c-profile">::profile</a>
+    
+    <li ><a href="#method-c-resume">::resume</a>
+    
+    <li ><a href="#method-c-running-3F">::running?</a>
+    
+    <li ><a href="#method-c-start">::start</a>
+    
+    <li ><a href="#method-c-start_script">::start_script</a>
+    
+    <li ><a href="#method-c-stop">::stop</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-RubyProf">
+  <h1 id="module-RubyProf" class="module">
+    module RubyProf
+  </h1>
+
+  <section class="description">
+    
+<p>The call info visitor class does a depth-first traversal across a list of
+method infos. At each call_info node, the visitor executes the block
+provided in the visit method. The block is passed two parameters, the event
+and the call_info instance. Event will be either :enter or :exit.</p>
+
+<pre class="ruby"><span class="ruby-identifier">visitor</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">CallInfoVisitor</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">result</span>.<span class="ruby-identifier">threads</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">top_call_infos</span>)
+
+<span class="ruby-identifier">method_names</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">visitor</span>.<span class="ruby-identifier">visit</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">call_info</span>, <span class="ruby-identifier">event</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">method_names</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">target</span>.<span class="ruby-identifier">full_name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span> <span class="ruby-operator">==</span> :<span class="ruby-identifier">enter</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">method_names</span>
+</pre>
+
+<p>These methods are here for backwards compatability with previous <a
+href="RubyProf.html">RubyProf</a> releases</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="VERSION">VERSION
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-cpu_frequency" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cpu_frequency</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Measurements</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cpu_frequency-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cpu_frequency</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">CpuTime</span>.<span class="ruby-identifier">frequency</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-exclude_threads" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            exclude_threads &rarr; exclude_threads
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns threads ruby-prof should exclude from profiling</p>
+          
+          
+
+          
+          <div class="method-source-code" id="exclude_threads-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exclude_threads</span>
+  <span class="ruby-ivar">@exclude_threads</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-exclude_threads-3D" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            exclude_threads= &rarr; void
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Specifies what threads ruby-prof should exclude from profiling</p>
+          
+          
+
+          
+          <div class="method-source-code" id="exclude_threads-3D-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exclude_threads=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@exclude_threads</span> = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-figure_measure_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">figure_measure_mode</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Checks if the user specified the clock mode via the RUBY_PROF_MEASURE_MODE
+environment variable</p>
+          
+          
+
+          
+          <div class="method-source-code" id="figure_measure_mode-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">figure_measure_mode</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;RUBY_PROF_MEASURE_MODE&quot;</span>]
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;wall&quot;</span>, <span class="ruby-string">&quot;wall_time&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">WALL_TIME</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;cpu&quot;</span>, <span class="ruby-string">&quot;cpu_time&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">CPU_TIME</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;allocations&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">ALLOCATIONS</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;memory&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">MEMORY</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;process&quot;</span>, <span class="ruby-string">&quot;process_time&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">PROCESS_TIME</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;gc_time&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">GC_TIME</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;gc_runs&quot;</span>
+    <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">GC_RUNS</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># the default is defined in the measure_mode reader</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_allocations" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_allocations</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_allocations-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_allocations</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_cpu_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_cpu_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_cpu_time-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_cpu_time</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">CpuTime</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_gc_runs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_gc_runs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_gc_runs-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_gc_runs</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">GcRuns</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_gc_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_gc_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_gc_time-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_gc_time</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">GcTime</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_memory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_memory</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_memory-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_memory</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_mode" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            measure_mode &rarr; measure_mode
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns what ruby-prof is measuring.  Valid values include:</p>
+
+<p>*RubyProf::WALL_TIME - Measure wall time using gettimeofday on Linx and
+GetLocalTime on Windows.  This is default. *RubyProf::PROCESS_TIME -
+Measure process time.  It is implemented using the clock functions in the C
+Runtime library. *RubyProf::CPU_TIME - Measure time using the CPU clock
+counter.  This mode is only supported on Pentium or PowerPC platforms.
+*RubyProf::ALLOCATIONS - Measure object allocations.  This requires a
+patched Ruby interpreter. *RubyProf::MEMORY - Measure memory size.  This
+requires a patched Ruby interpreter. *RubyProf::GC_RUNS - Measure number of
+garbage collections.  This requires a patched Ruby interpreter.
+*RubyProf::GC_TIME - Measure time spent doing garbage collection.  This
+requires a patched Ruby interpreter.*/</p>
+          
+          
+
+          
+          <div class="method-source-code" id="measure_mode-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_mode</span>
+  <span class="ruby-ivar">@measure_mode</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">WALL_TIME</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_mode-3D" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            measure_mode=value &rarr; void
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Specifies what ruby-prof should measure.  Valid values include:</p>
+
+<p>*RubyProf::WALL_TIME - Measure wall time using gettimeofday on Linx and
+GetLocalTime on Windows.  This is default. *RubyProf::PROCESS_TIME -
+Measure process time.  It is implemented using the clock functions in the C
+Runtime library. *RubyProf::CPU_TIME - Measure time using the CPU clock
+counter.  This mode is only supported on Pentium or PowerPC platforms.
+*RubyProf::ALLOCATIONS - Measure object allocations.  This requires a
+patched Ruby interpreter. *RubyProf::MEMORY - Measure memory size.  This
+requires a patched Ruby interpreter. *RubyProf::GC_RUNS - Measure number of
+garbage collections.  This requires a patched Ruby interpreter.
+*RubyProf::GC_TIME - Measure time spent doing garbage collection.  This
+requires a patched Ruby interpreter.*/</p>
+          
+          
+
+          
+          <div class="method-source-code" id="measure_mode-3D-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_mode=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@measure_mode</span> = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_mode_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_mode_string</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_mode_string-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_mode_string</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">measure_mode</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">WALL_TIME</span>    <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;wall_time&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">CPU_TIME</span>     <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;cpu_time&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">PROCESS_TIME</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;process_time_time&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">ALLOCATIONS</span>  <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;allocations&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">MEMORY</span>       <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;memory&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">GC_TIME</span>      <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;gc_time&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">GC_RUNS</span>      <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;gc_runs&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_process_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_process_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_process_time-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_process_time</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">ProcessTime</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-measure_wall_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">measure_wall_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="measure_wall_time-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">measure_wall_time</span>
+  <span class="ruby-constant">Measure</span><span class="ruby-operator">::</span><span class="ruby-constant">WallTime</span>.<span class="ruby-identifier">measure</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-pause" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pause</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pause-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pause</span>
+  <span class="ruby-identifier">ensure_running!</span>
+  <span class="ruby-identifier">disable_gc_stats_if_needed</span>
+  <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">pause</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-profile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">profile</span><span
+            class="method-args">(options = {}, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="RubyProf/Profile.html">Profile</a> a block</p>
+          
+          
+
+          
+          <div class="method-source-code" id="profile-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">profile</span>(<span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">ensure_not_running!</span>
+  <span class="ruby-identifier">gc_stat_was_enabled</span> = <span class="ruby-identifier">enable_gc_stats_if_needed</span>
+  <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">measure_mode</span><span class="ruby-operator">:</span> <span class="ruby-identifier">measure_mode</span>, <span class="ruby-identifier">exclude_threads</span><span class="ruby-operator">:</span> <span class="ruby-identifier">exclude_threads</span> }.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">profile</span>(<span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">disable_gc_stats_if_needed</span>(<span class="ruby-identifier">gc_stat_was_enabled</span>)
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-resume" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resume</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="resume-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">resume</span>
+  <span class="ruby-identifier">ensure_running!</span>
+  <span class="ruby-identifier">enable_gc_stats_if_needed</span>
+  <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">resume</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-running-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">running?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="running-3F-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">running?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@profile</span>) <span class="ruby-keyword">and</span> <span class="ruby-ivar">@profile</span>
+    <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">running?</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-start" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="start-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start</span>
+  <span class="ruby-identifier">ensure_not_running!</span>
+  <span class="ruby-ivar">@profile</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">measure_mode</span><span class="ruby-operator">:</span> <span class="ruby-identifier">measure_mode</span>, <span class="ruby-identifier">exclude_threads</span><span class="ruby-operator">:</span> <span class="ruby-identifier">exclude_threads</span>)
+  <span class="ruby-identifier">enable_gc_stats_if_needed</span>
+  <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">start</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-start_script" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_script</span><span
+            class="method-args">(script)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Profiling</p>
+          
+          
+
+          
+          <div class="method-source-code" id="start_script-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start_script</span>(<span class="ruby-identifier">script</span>)
+  <span class="ruby-identifier">start</span>
+  <span class="ruby-identifier">load</span> <span class="ruby-identifier">script</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-stop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stop</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="stop-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/compatibility.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stop</span>
+  <span class="ruby-identifier">ensure_running!</span>
+  <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">stop</span>
+  <span class="ruby-identifier">disable_gc_stats_if_needed</span>
+  <span class="ruby-ivar">@profile</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

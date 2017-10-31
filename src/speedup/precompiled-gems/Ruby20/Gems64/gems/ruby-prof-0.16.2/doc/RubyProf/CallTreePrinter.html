@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class RubyProf::CallTreePrinter - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="AbstractPrinter.html">RubyProf::AbstractPrinter</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-base_name">#base_name</a>
+    
+    <li ><a href="#method-i-convert">#convert</a>
+    
+    <li ><a href="#method-i-determine_event_specification_and_value_scale">#determine_event_specification_and_value_scale</a>
+    
+    <li ><a href="#method-i-file">#file</a>
+    
+    <li ><a href="#method-i-file_name_for_thread">#file_name_for_thread</a>
+    
+    <li ><a href="#method-i-file_path_for_thread">#file_path_for_thread</a>
+    
+    <li ><a href="#method-i-path">#path</a>
+    
+    <li ><a href="#method-i-print">#print</a>
+    
+    <li ><a href="#method-i-print_headers">#print_headers</a>
+    
+    <li ><a href="#method-i-print_method">#print_method</a>
+    
+    <li ><a href="#method-i-print_thread">#print_thread</a>
+    
+    <li ><a href="#method-i-print_threads">#print_threads</a>
+    
+    <li ><a href="#method-i-remove_subsidiary_files_from_previous_profile_runs">#remove_subsidiary_files_from_previous_profile_runs</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-RubyProf::CallTreePrinter">
+  <h1 id="class-RubyProf::CallTreePrinter" class="class">
+    class RubyProf::CallTreePrinter
+  </h1>
+
+  <section class="description">
+    
+<p>Generate profiling information in callgrind format for use by kcachegrind
+and similar tools.</p>
+
+<p>Note: when profiling for a callgrind printer, one should use the
+merge_fibers: true option when creating the profile. Otherwise each fiber
+would appear as a separate profile.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-base_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">base_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="base_name-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">base_name</span>
+  <span class="ruby-ivar">@options</span>[<span class="ruby-value">:profile</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;profile&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-convert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convert</span><span
+            class="method-args">(value)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="convert-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convert</span>(<span class="ruby-identifier">value</span>)
+  (<span class="ruby-identifier">value</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@value_scale</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-determine_event_specification_and_value_scale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">determine_event_specification_and_value_scale</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="determine_event_specification_and_value_scale-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">determine_event_specification_and_value_scale</span>
+  <span class="ruby-ivar">@event_specification</span> = <span class="ruby-string">&quot;events: &quot;</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_mode</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">PROCESS_TIME</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOCKS_PER_SEC</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;process_time&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">WALL_TIME</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-value">1_000_000</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;wall_time&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:CPU_TIME</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">CPU_TIME</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">cpu_frequency</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;cpu_time&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:ALLOCATIONS</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">ALLOCATIONS</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;allocations&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:MEMORY</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">MEMORY</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;memory&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:GC_RUNS</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">GC_RUNS</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;gc_runs&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:GC_TIME</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">RubyProf</span><span class="ruby-operator">::</span><span class="ruby-constant">GC_TIME</span>
+      <span class="ruby-ivar">@value_scale</span> = <span class="ruby-value">1000000</span>
+      <span class="ruby-ivar">@event_specification</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;gc_time&#39;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unknown measure mode: #{RubyProf.measure_mode}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">file</span><span
+            class="method-args">(method)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="file-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file</span>(<span class="ruby-identifier">method</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">method</span>.<span class="ruby-identifier">source_file</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-file_name_for_thread" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">file_name_for_thread</span><span
+            class="method-args">(thread)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="file_name_for_thread-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file_name_for_thread</span>(<span class="ruby-identifier">thread</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">fiber_id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Fiber</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">object_id</span>
+    [<span class="ruby-identifier">base_name</span>, <span class="ruby-string">&quot;callgrind.out&quot;</span>, <span class="ruby-identifier">$$</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;.&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    [<span class="ruby-identifier">base_name</span>, <span class="ruby-string">&quot;callgrind.out&quot;</span>, <span class="ruby-identifier">$$</span>, <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">fiber_id</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-file_path_for_thread" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">file_path_for_thread</span><span
+            class="method-args">(thread)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="file_path_for_thread-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file_path_for_thread</span>(<span class="ruby-identifier">thread</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">file_name_for_thread</span>(<span class="ruby-identifier">thread</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="path-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-ivar">@options</span>[<span class="ruby-value">:path</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print</span><span
+            class="method-args">(options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">setup_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">determine_event_specification_and_value_scale</span>
+  <span class="ruby-identifier">print_threads</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_headers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_headers</span><span
+            class="method-args">(output, thread)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_headers-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_headers</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">thread</span>)
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{@event_specification}\n\n&quot;</span>
+  <span class="ruby-comment"># this doesn&#39;t work. kcachegrind does not fully support the spec.</span>
+  <span class="ruby-comment"># output &lt;&lt; &quot;thread: #{thread.id}\n\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_method" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_method</span><span
+            class="method-args">(output, method)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_method-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_method</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">method</span>)
+  <span class="ruby-comment"># Print out the file and method name</span>
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;fl=#{file(method)}\n&quot;</span>
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;fn=#{method_name(method)}\n&quot;</span>
+
+  <span class="ruby-comment"># Now print out the function line number and its self time</span>
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{method.line} #{convert(method.self_time)}\n&quot;</span>
+
+  <span class="ruby-comment"># Now print out all the children methods</span>
+  <span class="ruby-identifier">method</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">callee</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;cfl=#{file(callee.target)}\n&quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;cfn=#{method_name(callee.target)}\n&quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;calls=#{callee.called} #{callee.line}\n&quot;</span>
+
+    <span class="ruby-comment"># Print out total times here!</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{callee.line} #{convert(callee.total_time)}\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_thread" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_thread</span><span
+            class="method-args">(thread)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_thread-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_thread</span>(<span class="ruby-identifier">thread</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_path_for_thread</span>(<span class="ruby-identifier">thread</span>), <span class="ruby-string">&quot;w&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">print_headers</span>(<span class="ruby-identifier">f</span>, <span class="ruby-identifier">thread</span>)
+    <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">methods</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">print_method</span>(<span class="ruby-identifier">f</span>, <span class="ruby-identifier">method</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_threads" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_threads</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_threads-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_threads</span>
+  <span class="ruby-identifier">remove_subsidiary_files_from_previous_profile_runs</span>
+  <span class="ruby-comment"># TODO: merge fibers of a given thread here, instead of relying</span>
+  <span class="ruby-comment"># on the profiler to merge fibers.</span>
+  <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">thread</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">print_thread</span>(<span class="ruby-identifier">thread</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-remove_subsidiary_files_from_previous_profile_runs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_subsidiary_files_from_previous_profile_runs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_subsidiary_files_from_previous_profile_runs-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_tree_printer.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_subsidiary_files_from_previous_profile_runs</span>
+  <span class="ruby-identifier">pattern</span> = [<span class="ruby-identifier">base_name</span>, <span class="ruby-string">&quot;callgrind.out&quot;</span>, <span class="ruby-identifier">$$</span>, <span class="ruby-string">&quot;*&quot;</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;.&quot;</span>)
+  <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">pattern</span>))
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_f</span>(<span class="ruby-identifier">files</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

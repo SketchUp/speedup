@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class RubyProf::GraphHtmlPrinter - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="AbstractPrinter.html">RubyProf::AbstractPrinter</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">ERB::Util</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-create_link">#create_link</a>
+    
+    <li ><a href="#method-i-file_link">#file_link</a>
+    
+    <li ><a href="#method-i-method_href">#method_href</a>
+    
+    <li ><a href="#method-i-print">#print</a>
+    
+    <li class="calls-super" ><a href="#method-i-setup_options">#setup_options</a>
+    
+    <li ><a href="#method-i-template">#template</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-RubyProf::GraphHtmlPrinter">
+  <h1 id="class-RubyProf::GraphHtmlPrinter" class="class">
+    class RubyProf::GraphHtmlPrinter
+  </h1>
+
+  <section class="description">
+    
+<p>Generates <a href="../files/examples/graph_html.html">graph</a> profile
+reports as html. To use the graph html printer:</p>
+
+<pre>result = RubyProf.profile do
+  [code to profile]
+end
+
+printer = RubyProf::GraphHtmlPrinter.new(result)
+printer.print(STDOUT, :min_percent=&gt;0)</pre>
+
+<p>The Graph printer takes the following options in its print methods:</p>
+
+<pre>:filename    - specify a file to use that contains the ERB
+               template to use, instead of the built-in self.template
+
+:template    - specify an ERB template to use, instead of the
+               built-in self.template</pre>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-create_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_link</span><span
+            class="method-args">(thread, overall_time, method)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a link to a method.  Note that we do not create links to methods
+which are under the min_perecent specified by the user, since they will not
+be printed out.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create_link-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_link</span>(<span class="ruby-identifier">thread</span>, <span class="ruby-identifier">overall_time</span>, <span class="ruby-identifier">method</span>)
+  <span class="ruby-identifier">total_percent</span> = (<span class="ruby-identifier">method</span>.<span class="ruby-identifier">total_time</span><span class="ruby-operator">/</span><span class="ruby-identifier">overall_time</span>) <span class="ruby-operator">*</span> <span class="ruby-value">100</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_percent</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min_percent</span>
+    <span class="ruby-comment"># Just return name</span>
+    <span class="ruby-identifier">h</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">full_name</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">href</span> = <span class="ruby-string">&#39;#&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">method_href</span>(<span class="ruby-identifier">thread</span>, <span class="ruby-identifier">method</span>)
+    <span class="ruby-node">&quot;&lt;a href=\&quot;#{href}\&quot;&gt;#{h method.full_name}&lt;/a&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-file_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">file_link</span><span
+            class="method-args">(path, linenum)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="file_link-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file_link</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">linenum</span>)
+  <span class="ruby-identifier">srcfile</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">srcfile</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\/ruby_runtime$/</span>
+    <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span>
+      <span class="ruby-node">&quot;&lt;a href=\&quot;txmt://open?url=file://#{h srcfile}&amp;line=#{linenum}\&quot; title=\&quot;#{h srcfile}:#{linenum}\&quot;&gt;#{linenum}&lt;/a&gt;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-node">&quot;&lt;a href=\&quot;file://#{h srcfile}##{linenum}\&quot; title=\&quot;#{h srcfile}:#{linenum}\&quot;&gt;#{linenum}&lt;/a&gt;&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-method_href" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_href</span><span
+            class="method-args">(thread, method)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="method_href-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_href</span>(<span class="ruby-identifier">thread</span>, <span class="ruby-identifier">method</span>)
+  <span class="ruby-identifier">h</span>(<span class="ruby-identifier">method</span>.<span class="ruby-identifier">full_name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">/[&gt;&lt;#\.\?=:]/</span>,<span class="ruby-string">&quot;_&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">fiber_id</span>.<span class="ruby-identifier">to_s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print</span><span
+            class="method-args">(output = STDOUT, options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print</span>(<span class="ruby-identifier">output</span> = <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">output</span>
+  <span class="ruby-identifier">setup_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-ivar">@output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@erb</span>.<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:rstrip</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup_options</span><span
+            class="method-args">(options)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="AbstractPrinter.html#method-i-setup_options">RubyProf::AbstractPrinter#setup_options</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="setup_options-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">options</span>)
+
+  <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:filename</span>]
+  <span class="ruby-identifier">template</span> = <span class="ruby-identifier">filename</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">untaint</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:template</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">template</span>)
+  <span class="ruby-ivar">@erb</span> = <span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">template</span>)
+  <span class="ruby-ivar">@erb</span>.<span class="ruby-identifier">filename</span> = <span class="ruby-identifier">filename</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-template" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">template</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="template-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/graph_html_printer.rb, line 73</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
+<span class="ruby-string">&#39;
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style media=&quot;all&quot; type=&quot;text/css&quot;&gt;
+    table {
+      border-collapse: collapse;
+      border: 1px solid #CCC;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      line-height: normal;
+      width: 100%;
+    }
+
+    th {
+      text-align: center;
+      border-top: 1px solid #FB7A31;
+      border-bottom: 1px solid #FB7A31;
+      background: #FFC;
+      padding: 0.3em;
+      border-left: 1px solid silver;
+    }
+
+    tr.break td {
+      border: 0;
+      border-top: 1px solid #FB7A31;
+      padding: 0;
+      margin: 0;
+    }
+
+    tr.method td {
+      font-weight: bold;
+    }
+
+    td {
+      padding: 0.3em;
+    }
+
+    td:first-child {
+      width: 190px;
+      }
+
+    td {
+      border-left: 1px solid #CCC;
+      text-align: center;
+    }
+
+    .method_name {
+      text-align: left;
+    }
+
+    tfoot td {
+      text-align: left;
+    }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Profile Report: &lt;%= RubyProf.measure_mode_string %&gt;&lt;/h1&gt;
+    &lt;!-- Threads Table --&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Thread ID&lt;/th&gt;
+        &lt;th&gt;Fiber ID&lt;/th&gt;
+        &lt;th&gt;Total Time&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;% for thread in @result.threads %&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;%= thread.id %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;a href=&quot;#&lt;%= thread.fiber_id %&gt;&quot;&gt;&lt;%= thread.fiber_id %&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= thread.total_time %&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;% end %&gt;
+    &lt;/table&gt;
+    &lt;!-- Methods Tables --&gt;
+    &lt;%
+       for thread in @result.threads
+         methods = thread.methods
+         total_time = thread.total_time
+    %&gt;
+      &lt;h2&gt;&lt;a name=&quot;&lt;%= thread.fiber_id %&gt;&quot;&gt;Thread &lt;%= thread.id %&gt;, Fiber: &lt;%= thread.fiber_id %&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;%Total&lt;/th&gt;
+            &lt;th&gt;%Self&lt;/th&gt;
+            &lt;th&gt;Total&lt;/th&gt;
+            &lt;th&gt;Self&lt;/th&gt;
+            &lt;th&gt;Wait&lt;/th&gt;
+            &lt;th&gt;Child&lt;/th&gt;
+            &lt;th&gt;Calls&lt;/th&gt;
+            &lt;th class=&quot;method_name&quot;&gt;Name&lt;/th&gt;
+            &lt;th&gt;Line&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;%
+             min_time = @options[:min_time] || (@options[:nonzero] ? 0.005 : nil)
+             methods.sort_by(&amp;sort_method).reverse_each do |method|
+               total_percentage = (method.total_time/total_time) * 100
+               next if total_percentage &lt; min_percent
+               next if min_time &amp;&amp; method.total_time &lt; min_time
+               self_percentage = (method.self_time/total_time) * 100
+          %&gt;
+               &lt;!-- Parents --&gt;
+               &lt;%
+                  for caller in method.aggregate_parents.sort_by(&amp;:total_time)
+                    next unless caller.parent
+                    next if min_time &amp;&amp; caller.total_time &lt; min_time
+               %&gt;
+                 &lt;tr&gt;
+                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, caller.total_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, caller.self_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, caller.wait_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, caller.children_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= &quot;#{caller.called}/#{method.called}&quot; %&gt;&lt;/td&gt;
+                   &lt;td class=&quot;method_name&quot;&gt;&lt;%= create_link(thread, total_time, caller.parent.target) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= file_link(caller.parent.target.source_file, caller.line) %&gt;&lt;/td&gt;
+                 &lt;/tr&gt;
+               &lt;% end %&gt;
+               &lt;tr class=&quot;method&quot;&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f\%&quot;, total_percentage) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f\%&quot;, self_percentage) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, method.total_time) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, method.self_time) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, method.wait_time) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, method.children_time) %&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;%= sprintf(&quot;%i&quot;, method.called) %&gt;&lt;/td&gt;
+                 &lt;td class=&quot;method_name&quot;&gt;
+                   &lt;a name=&quot;&lt;%= method_href(thread, method) %&gt;&quot;&gt;
+                     &lt;%= method.recursive? ? &quot;*&quot; : &quot; &quot;%&gt;&lt;%= h method.full_name %&gt;
+                   &lt;/a&gt;
+                 &lt;/td&gt;
+                 &lt;td&gt;&lt;%= file_link(method.source_file, method.line) %&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;!-- Children --&gt;
+               &lt;%
+                  for callee in method.aggregate_children.sort_by(&amp;:total_time).reverse
+                    next if min_time &amp;&amp; callee.total_time &lt; min_time
+               %&gt;
+                 &lt;tr&gt;
+                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, callee.total_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, callee.self_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, callee.wait_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= sprintf(&quot;%.2f&quot;, callee.children_time) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= &quot;#{callee.called}/#{callee.target.called}&quot; %&gt;&lt;/td&gt;
+                   &lt;td class=&quot;method_name&quot;&gt;&lt;%= create_link(thread, total_time, callee.target) %&gt;&lt;/td&gt;
+                   &lt;td&gt;&lt;%= file_link(method.source_file, callee.line) %&gt;&lt;/td&gt;
+                 &lt;/tr&gt;
+               &lt;% end %&gt;
+               &lt;!-- Create divider row --&gt;
+               &lt;tr class=&quot;break&quot;&gt;&lt;td colspan=&quot;9&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+          &lt;% end %&gt;
+        &lt;/tbody&gt;
+        &lt;tfoot&gt;
+          &lt;tr&gt;
+            &lt;td colspan=&quot;9&quot;&gt;* indicates recursively called methods&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tfoot&gt;
+      &lt;/table&gt;
+    &lt;% end %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;&#39;</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

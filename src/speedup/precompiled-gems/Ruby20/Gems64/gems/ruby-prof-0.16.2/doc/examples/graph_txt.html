@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>graph - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Graph+Profiles">Graph Profiles</a>
+    <li><a href="#label-Overview">Overview</a>
+    <li><a href="#label-Parents">Parents</a>
+    <li><a href="#label-Children">Children</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../README_rdoc.html">README</a>
+  
+    <li><a href="../examples/flat_txt.html">flat</a>
+  
+    <li><a href="../examples/graph_html.html">graph.html</a>
+  
+    <li><a href="../examples/graph_txt.html">graph</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page examples/graph.txt">
+
+<h1 id="label-Graph+Profiles">Graph Profiles<span><a href="#label-Graph+Profiles">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Graph profiles show how long each method runs, which methods call it and
+which methods it calls.</p>
+
+<p>As an example, here is the output from running printers_test.rb:</p>
+
+<p>Measure Mode: wall_time Thread ID: 70310439543100 Fiber ID: 70310456289620
+Total Time: 0.05264616012573242 Sort by: total_time</p>
+
+<pre>%total   %self      total       self       wait      child            calls    name</pre>
+<hr>
+
+<pre>100.00%   0.01%      0.053      0.000      0.000      0.053                1      PrintersTest#setup
+                     0.053      0.000      0.000      0.053              1/1      Object#run_primes</pre>
+<hr>
+
+<pre>                    0.053      0.000      0.000      0.053              1/1      PrintersTest#setup
+99.99%   0.01%      0.053      0.000      0.000      0.053                1      Object#run_primes
+                    0.052      0.000      0.000      0.052              1/1      Object#find_primes
+                    0.001      0.000      0.000      0.001              1/1      Object#make_random_array
+                    0.000      0.000      0.000      0.000              1/1      Object#find_largest</pre>
+<hr>
+
+<pre>                    0.052      0.000      0.000      0.052              1/1      Object#run_primes
+98.35%   0.00%      0.052      0.000      0.000      0.052                1      Object#find_primes
+                    0.052      0.000      0.000      0.051              1/1      Array#select</pre>
+<hr>
+
+<pre>                    0.052      0.000      0.000      0.051              1/1      Object#find_primes
+98.34%   0.61%      0.052      0.000      0.000      0.051                1      Array#select
+                    0.051      0.000      0.000      0.051        1000/1000      Object#is_prime</pre>
+<hr>
+
+<pre>                    0.051      0.000      0.000      0.051        1000/1000      Array#select
+97.74%   0.93%      0.051      0.000      0.000      0.051             1000      Object#is_prime
+                    0.051      0.051      0.000      0.000        1000/1001      Integer#upto</pre>
+<hr>
+
+<pre>                    0.000      0.000      0.000      0.000           1/1001      Object#find_largest
+                    0.051      0.051      0.000      0.000        1000/1001      Object#is_prime
+96.91%  96.91%      0.051      0.051      0.000      0.000             1001      Integer#upto</pre>
+<hr>
+
+<pre>                   0.001      0.000      0.000      0.001              1/1      Object#run_primes
+1.51%   0.00%      0.001      0.000      0.000      0.001                1      Object#make_random_array
+                   0.001      0.000      0.000      0.000              1/1      Array#each_index
+                   0.000      0.000      0.000      0.000              1/1      Class#new</pre>
+<hr>
+
+<pre>                   0.001      0.000      0.000      0.000              1/1      Object#make_random_array
+1.50%   0.56%      0.001      0.000      0.000      0.000                1      Array#each_index
+                   0.000      0.000      0.000      0.000        1000/1000      Kernel#rand</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000        1000/1000      Array#each_index
+0.94%   0.72%      0.000      0.000      0.000      0.000             1000      Kernel#rand
+                   0.000      0.000      0.000      0.000        1000/1000      Kernel#respond_to_missing?</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000        1000/1000      Kernel#rand
+0.22%   0.22%      0.000      0.000      0.000      0.000             1000      Kernel#respond_to_missing?</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000              1/1      Object#run_primes
+0.12%   0.02%      0.000      0.000      0.000      0.000                1      Object#find_largest
+                   0.000      0.000      0.000      0.000           1/1001      Integer#upto
+                   0.000      0.000      0.000      0.000              1/1      Array#first</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000              1/1      Object#make_random_array
+0.01%   0.00%      0.000      0.000      0.000      0.000                1      Class#new
+                   0.000      0.000      0.000      0.000              1/1      Array#initialize</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000              1/1      Class#new
+0.01%   0.01%      0.000      0.000      0.000      0.000                1      Array#initialize</pre>
+<hr>
+
+<pre>                   0.000      0.000      0.000      0.000              1/1      Object#find_largest
+0.00%   0.00%      0.000      0.000      0.000      0.000                1      Array#first</pre>
+
+<h2 id="label-Overview">Overview<span><a href="#label-Overview">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Dashed lines divide the report into entries, with one entry per method. 
+Entries are sorted by total time which is the time spent in the method plus
+its children.</p>
+
+<p>Each entry has a primary line demarked by values in the %total and %self
+columns.  The primary line represents the method being profiled.  Lines
+above it are the methods that called this method (parents) while the lines
+below it are the methods it called (children).</p>
+
+<p>All values are in seconds.  For the primary line, the columns represent:</p>
+
+<pre>%total  - The percentage of time spent in this method and its children
+%self   - The percentage of time spent in this method
+total   - The time spent in this method and its children.
+self    - The time spent in this method.
+wait    - The time spent waiting for other threads in this method.
+child   - The time spent in this method&#39;s children.
+calls   - The number of times this method was called.
+name    - The name of the method.</pre>
+
+<p>The interpretation of method names is:</p>
+
+<pre>MyObject#test           - An instance method &quot;test&quot; of the class &quot;MyObject&quot;
+&lt;Object:MyObject&gt;#test  - The &lt;&gt; characters indicate a singleton method on a singleton class.</pre>
+
+<p>For example, we see that 97.74% of the time was spent in Object#is_prime
+and its children.  Of that time, almost everything was contributed by
+Integer#upto. Overall, Integer#upto was called 1001 times and 1000 of those
+calls were made by Object#is_prime.</p>
+
+<h2 id="label-Parents">Parents<span><a href="#label-Parents">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>In each entry, the lines above the primary line are the methods that called
+the current method.  If the current method is a root method then no parents
+are shown.</p>
+
+<p>For parent lines, the columns represent:</p>
+
+<pre>total  - The time spent in the current method and its children on behalf of the parent method.
+self   - The time spent in this method on behalf of the parent method.
+child  - The time spent in this method&#39;s children on behalf of the parent.
+wait   - The time spent waiting for other threads in this method&#39;s children on behalf of the parent.
+calls  - The number of times the parent method called the current method vs. the total number of calls of the current method.</pre>
+
+<p>Looking at the main entry for Integer#upto, we see that it was called 1000
+times from Object#is_prime and 1 time from find_largest.</p>
+
+<h2 id="label-Children">Children<span><a href="#label-Children">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>In each entry, the lines below the primary line are the methods that the
+current method called.  If the current method is a leaf method then no
+children are shown.</p>
+
+<p>For children lines, the columns represent:</p>
+
+<pre>total  - The time spent in the child, and its descendants, on behalf of the current method
+self   - The time spent in the child on behalf of the current method.
+wait   - The time spent waiting for other threads in the child&#39;s and its descendants on behalf of the current method.
+child  - The time spent in the child&#39;s descendants on behalf of the current method.
+calls  - The number of times the child method was called by the current method vs. the total number of calls of the child method.</pre>
+
+<p>If we look at the main entry for Objext#run_primes, we see that it called
+three other methods - Object#find_primes, Object#make_random_array and
+Object#find_largest.</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

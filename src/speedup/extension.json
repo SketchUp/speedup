@@ -1,0 +1,10 @@
+{
+  "name": "SpeedUp",
+  "description": "",
+  "creator": "Trimble Inc, SketchUp",
+  "copyright": "Copyright 2014-2017 Trimble Inc.",
+  "license": "MIT License",
+  "product_id": "SpeedUp",
+  "version": "0.1.0",
+  "build": "1"
+}

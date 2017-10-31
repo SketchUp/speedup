@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class RubyProf::CallStackPrinter - ruby-prof</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="AbstractPrinter.html">RubyProf::AbstractPrinter</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">ERB::Util</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-application">#application</a>
+    
+    <li ><a href="#method-i-arguments">#arguments</a>
+    
+    <li ><a href="#method-i-base64_image">#base64_image</a>
+    
+    <li ><a href="#method-i-color">#color</a>
+    
+    <li ><a href="#method-i-dump">#dump</a>
+    
+    <li ><a href="#method-i-expansion">#expansion</a>
+    
+    <li ><a href="#method-i-graph_link">#graph_link</a>
+    
+    <li ><a href="#method-i-link">#link</a>
+    
+    <li ><a href="#method-i-method_href">#method_href</a>
+    
+    <li ><a href="#method-i-name">#name</a>
+    
+    <li ><a href="#method-i-open_asset">#open_asset</a>
+    
+    <li ><a href="#method-i-print">#print</a>
+    
+    <li ><a href="#method-i-print_commands">#print_commands</a>
+    
+    <li ><a href="#method-i-print_css">#print_css</a>
+    
+    <li ><a href="#method-i-print_footer">#print_footer</a>
+    
+    <li ><a href="#method-i-print_header">#print_header</a>
+    
+    <li ><a href="#method-i-print_help">#print_help</a>
+    
+    <li ><a href="#method-i-print_java_script">#print_java_script</a>
+    
+    <li ><a href="#method-i-print_stack">#print_stack</a>
+    
+    <li ><a href="#method-i-print_title_bar">#print_title_bar</a>
+    
+    <li ><a href="#method-i-sum">#sum</a>
+    
+    <li ><a href="#method-i-threshold">#threshold</a>
+    
+    <li ><a href="#method-i-title">#title</a>
+    
+    <li ><a href="#method-i-total_time">#total_time</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-RubyProf::CallStackPrinter">
+  <h1 id="class-RubyProf::CallStackPrinter" class="class">
+    class RubyProf::CallStackPrinter
+  </h1>
+
+  <section class="description">
+    
+<p>prints a HTML visualization of the call tree</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-application" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">application</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="application-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">application</span>
+  <span class="ruby-ivar">@options</span>[<span class="ruby-value">:application</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">$PROGRAM_NAME</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-arguments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">arguments</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="arguments-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">arguments</span>
+  <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-base64_image" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">base64_image</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="base64_image-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">base64_image</span>
+  <span class="ruby-identifier">file</span> = <span class="ruby-identifier">open_asset</span>(<span class="ruby-string">&#39;call_stack_printer.png&#39;</span>)
+  <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\n/</span>, <span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-color" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">color</span><span
+            class="method-args">(p)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="color-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">color</span>(<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">i</span> = <span class="ruby-identifier">p</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>
+    <span class="ruby-string">&quot;01&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>
+    <span class="ruby-string">&quot;05&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">100</span>
+    <span class="ruby-string">&quot;9&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">&quot;#{i/10}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dump" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dump</span><span
+            class="method-args">(ci)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="dump-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dump</span>(<span class="ruby-identifier">ci</span>)
+  <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;%s/%d t:%f s:%f w:%f  \n&quot;</span>, <span class="ruby-identifier">ci</span>, <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">object_id</span>, <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">total_time</span>, <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">self_time</span>, <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">wait_time</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-expansion" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">expansion</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="expansion-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expansion</span>
+  <span class="ruby-ivar">@options</span>[<span class="ruby-value">:expansion</span>] <span class="ruby-operator">||</span> <span class="ruby-value">10.0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-graph_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">graph_link</span><span
+            class="method-args">(call_info)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="graph_link-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">graph_link</span>(<span class="ruby-identifier">call_info</span>)
+  <span class="ruby-identifier">total_calls</span> = <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">target</span>.<span class="ruby-identifier">call_infos</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">ci</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">called</span>}
+  <span class="ruby-identifier">href</span> = <span class="ruby-node">&quot;#{@graph_html}##{method_href(call_info.target)}&quot;</span>
+  <span class="ruby-identifier">totals</span> = <span class="ruby-ivar">@graph_html</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;&lt;a href=&#39;#{href}&#39;&gt;#{total_calls}&lt;/a&gt;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">total_calls</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-node">&quot;[#{call_info.called} calls, #{totals} total]&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">link</span><span
+            class="method-args">(call_info)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="link-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">link</span>(<span class="ruby-identifier">call_info</span>)
+  <span class="ruby-identifier">method</span> = <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">target</span>
+  <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">method</span>.<span class="ruby-identifier">source_file</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\/ruby_runtime$/</span>
+    <span class="ruby-identifier">h</span>(<span class="ruby-identifier">name</span>(<span class="ruby-identifier">call_info</span>))
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">RUBY_PLATFORM</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/darwin/</span>
+      <span class="ruby-node">&quot;&lt;a href=\&quot;txmt://open?url=file://#{file}&amp;line=#{method.line}\&quot;&gt;#{h(name(call_info))}&lt;/a&gt;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-node">&quot;&lt;a href=\&quot;file://#{file}##{method.line}\&quot;&gt;#{h(name(call_info))}&lt;/a&gt;&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-method_href" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_href</span><span
+            class="method-args">(method)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="method_href-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_href</span>(<span class="ruby-identifier">method</span>)
+  <span class="ruby-identifier">h</span>(<span class="ruby-identifier">method</span>.<span class="ruby-identifier">full_name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">/[&gt;&lt;#\.\?=:]/</span>,<span class="ruby-string">&quot;_&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@current_thread_id</span>.<span class="ruby-identifier">to_s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">(call_info)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>(<span class="ruby-identifier">call_info</span>)
+  <span class="ruby-identifier">method</span> = <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">target</span>
+  <span class="ruby-identifier">method</span>.<span class="ruby-identifier">full_name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-open_asset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open_asset</span><span
+            class="method-args">(file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="open_asset-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open_asset</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&#39;../../assets&#39;</span>, <span class="ruby-keyword">__FILE__</span>), <span class="ruby-identifier">file</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">&#39;rb&#39;</span>).<span class="ruby-identifier">read</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print</span><span
+            class="method-args">(output = STDOUT, options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specify print options.</p>
+
+<p>options - Hash table</p>
+
+<pre>:min_percent - Number 0 to 100 that specifes the minimum
+               %self (the methods self time divided by the
+               overall total time) that a method must take
+               for it to be printed out in the report.
+               Default value is 0.
+
+:print_file  - True or false. Specifies if a method&#39;s source
+               file should be printed.  Default value if false.
+
+:threshold   - a float from 0 to 100 that sets the threshold of
+               results displayed.
+               Default value is 1.0
+
+:title       - a String to overide the default &quot;ruby-prof call tree&quot;
+               title of the report.
+
+:expansion   - a float from 0 to 100 that sets the threshold of
+               results that are expanded, if the percent_total
+               exceeds it.
+               Default value is 10.0
+
+:application - a String to overide the name of the application,
+               as it appears on the report.</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="print-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print</span>(<span class="ruby-identifier">output</span> = <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">output</span>
+  <span class="ruby-identifier">setup_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@graph_html</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:graph</span>)
+    <span class="ruby-ivar">@graph_html</span> = <span class="ruby-string">&quot;file://&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@graph_html</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@graph_html</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">==</span><span class="ruby-string">&quot;/&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">print_header</span>
+
+  <span class="ruby-ivar">@overall_threads_time</span> = <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">threads</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span>, <span class="ruby-identifier">thread</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">val</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">total_time</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">thread</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@current_thread_id</span> = <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">fiber_id</span>
+    <span class="ruby-ivar">@overall_time</span> = <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">total_time</span>
+    <span class="ruby-identifier">thread_info</span> = <span class="ruby-node">&quot;Thread: #{thread.id}&quot;</span>
+    <span class="ruby-identifier">thread_info</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;, Fiber: #{thread.fiber_id}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">fiber_id</span>
+    <span class="ruby-identifier">thread_info</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; (#{&quot;%4.2f%%&quot; % ((@overall_time/@overall_threads_time)*100)} ~ #{@overall_time})&quot;</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;&lt;div class=\&quot;thread\&quot;&gt;#{thread_info}&lt;/div&gt;&quot;</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&lt;ul name=\&quot;thread\&quot;&gt;&quot;</span>
+    <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment"># $stderr.print m.dump</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">root?</span>
+      <span class="ruby-identifier">m</span>.<span class="ruby-identifier">call_infos</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ci</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">root?</span>
+        <span class="ruby-identifier">print_stack</span> <span class="ruby-identifier">ci</span>, <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">total_time</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&lt;/ul&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">print_footer</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_commands" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_commands</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_commands-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 227</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">print_commands</span>
+      <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value">&lt;&lt;-&quot;end_commands&quot;
+&lt;div id=\&quot;commands\&quot;&gt;
+&lt;span style=\&quot;font-size: 11pt; font-weight: bold;\&quot;&gt;Threshold:&lt;/span&gt;
+&lt;input value=\&quot;#{h threshold}\&quot; size=\&quot;3\&quot; id=\&quot;threshold\&quot; type=\&quot;text\&quot;&gt;
+&lt;input value=\&quot;Apply\&quot; onclick=\&quot;setThreshold();\&quot; type=\&quot;submit\&quot;&gt;
+&lt;input value=\&quot;Expand All\&quot; onclick=\&quot;expandAll(event);\&quot; type=\&quot;submit\&quot;&gt;
+&lt;input value=\&quot;Collapse All\&quot; onclick=\&quot;collapseAll(event);\&quot; type=\&quot;submit\&quot;&gt;
+&lt;input value=\&quot;Show Help\&quot; onclick=\&quot;toggleHelp(this);\&quot; type=\&quot;submit\&quot;&gt;
+&lt;/div&gt;
+end_commands</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_css" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_css</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_css-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 203</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_css</span>
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">open_asset</span>(<span class="ruby-string">&#39;call_stack_printer.css.html&#39;</span>)
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">html</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;%s&#39;</span>, <span class="ruby-identifier">base64_image</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_footer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_footer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_footer-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_footer</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;&lt;div id=&quot;sentinel&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_header" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_header</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_header-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 182</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_header</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&lt;html&gt;&lt;head&gt;&quot;</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&#39;</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&lt;title&gt;#{h title}&lt;/title&gt;&quot;</span>
+  <span class="ruby-identifier">print_css</span>
+  <span class="ruby-identifier">print_java_script</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;&lt;/head&gt;&lt;body&gt;&lt;div style=&quot;display: inline-block;&quot;&gt;&#39;</span>
+  <span class="ruby-identifier">print_title_bar</span>
+  <span class="ruby-identifier">print_commands</span>
+  <span class="ruby-identifier">print_help</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_help" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_help</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_help-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 240</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">print_help</span>
+      <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value">&lt;&lt;-&#39;end_help&#39;
+&lt;div style=&quot;display: none;&quot; id=&quot;help&quot;&gt;
+&amp;#8226; Enter a decimal value &lt;i&gt;d&lt;/i&gt; into the threshold field and click &quot;Apply&quot;
+        to hide all nodes marked with time values lower than &lt;i&gt;d&lt;/i&gt;.&lt;br&gt;
+&amp;#8226; Click on &quot;Expand All&quot; for full tree expansion.&lt;br&gt;
+&amp;#8226; Click on &quot;Collapse All&quot; to show only top level nodes.&lt;br&gt;
+&amp;#8226; Use a, s, d, w as in Quake or Urban Terror to navigate the tree.&lt;br&gt;
+&amp;#8226; Use f and b to navigate the tree in preorder forward and backwards.&lt;br&gt;
+&amp;#8226; Use x to toggle visibility of a subtree.&lt;br&gt;
+&amp;#8226; Use * to expand/collapse a whole subtree.&lt;br&gt;
+&amp;#8226; Use h to navigate to thread root.&lt;br&gt;
+&amp;#8226; Use n and p to navigate between threads.&lt;br&gt;
+&amp;#8226; Click on background to move focus to a subtree.&lt;br&gt;
+&lt;/div&gt;
+end_help</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_java_script" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_java_script</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_java_script-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_java_script</span>
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">open_asset</span>(<span class="ruby-string">&#39;call_stack_printer.js.html&#39;</span>)
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">html</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_stack" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_stack</span><span
+            class="method-args">(call_info, parent_time)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_stack-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_stack</span>(<span class="ruby-identifier">call_info</span>, <span class="ruby-identifier">parent_time</span>)
+  <span class="ruby-identifier">total_time</span> = <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">total_time</span>
+  <span class="ruby-identifier">percent_parent</span> = (<span class="ruby-identifier">total_time</span><span class="ruby-operator">/</span><span class="ruby-identifier">parent_time</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>
+  <span class="ruby-identifier">percent_total</span> = (<span class="ruby-identifier">total_time</span><span class="ruby-operator">/</span><span class="ruby-ivar">@overall_time</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">percent_total</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min_percent</span>
+  <span class="ruby-identifier">color</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">color</span>(<span class="ruby-identifier">percent_total</span>)
+  <span class="ruby-identifier">kids</span> = <span class="ruby-identifier">call_info</span>.<span class="ruby-identifier">children</span>
+  <span class="ruby-identifier">visible</span> = <span class="ruby-identifier">percent_total</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">threshold</span>
+  <span class="ruby-identifier">expanded</span> = <span class="ruby-identifier">percent_total</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">expansion</span>
+  <span class="ruby-identifier">display</span> = <span class="ruby-identifier">visible</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;block&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;none&quot;</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;&lt;li class=\&quot;color#{color}\&quot; style=\&quot;display:#{display}\&quot;&gt;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">kids</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;&lt;a href=\&quot;#\&quot; class=\&quot;toggle empty\&quot; &gt;&lt;/a&gt;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">visible_children</span> = <span class="ruby-identifier">kids</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ci</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">ci</span>.<span class="ruby-identifier">total_time</span><span class="ruby-operator">/</span><span class="ruby-ivar">@overall_time</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">threshold</span>}
+    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">visible_children</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">expanded</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;minus&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;plus&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-string">&quot;empty&quot;</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;&lt;a href=\&quot;#\&quot; class=\&quot;toggle #{image}\&quot; &gt;&lt;/a&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;&lt;span&gt; %4.2f%% (%4.2f%%) %s %s&lt;/span&gt;\n&quot;</span>, <span class="ruby-identifier">percent_total</span>, <span class="ruby-identifier">percent_parent</span>, <span class="ruby-identifier">link</span>(<span class="ruby-identifier">call_info</span>), <span class="ruby-identifier">graph_link</span>(<span class="ruby-identifier">call_info</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">kids</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">expanded</span>
+      <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&lt;ul&gt;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&#39;&lt;ul style=&quot;display:none&quot;&gt;&#39;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">kids</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-operator">-</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">total_time</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">callinfo</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">print_stack</span> <span class="ruby-identifier">callinfo</span>, <span class="ruby-identifier">total_time</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&lt;/ul&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&lt;/li&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-print_title_bar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_title_bar</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="print_title_bar-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 218</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">print_title_bar</span>
+      <span class="ruby-ivar">@output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value">&lt;&lt;-&quot;end_title_bar&quot;
+&lt;div id=&quot;titlebar&quot;&gt;
+Call tree for application &lt;b&gt;#{h application} #{h arguments}&lt;/b&gt;&lt;br/&gt;
+Generated on #{Time.now} with options #{h @options.inspect}&lt;br/&gt;
+&lt;/div&gt;
+end_title_bar</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sum</span><span
+            class="method-args">(a)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sum-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sum</span>(<span class="ruby-identifier">a</span>)
+  <span class="ruby-identifier">a</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0.0</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span><span class="ruby-operator">+=</span><span class="ruby-identifier">t</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-threshold" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">threshold</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="threshold-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">threshold</span>
+  <span class="ruby-ivar">@options</span>[<span class="ruby-value">:threshold</span>] <span class="ruby-operator">||</span> <span class="ruby-value">1.0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>
+  <span class="ruby-ivar">@title</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:title</span>) <span class="ruby-operator">||</span> <span class="ruby-string">&quot;ruby-prof call tree&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_time</span><span
+            class="method-args">(call_infos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_time-source">
+            <pre><span class="ruby-comment"># File lib/ruby-prof/printers/call_stack_printer.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_time</span>(<span class="ruby-identifier">call_infos</span>)
+  <span class="ruby-identifier">sum</span>(<span class="ruby-identifier">call_infos</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ci</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ci</span>.<span class="ruby-identifier">total_time</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
