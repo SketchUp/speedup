@@ -4,13 +4,7 @@
 
 This is a profiling tool for SketchUp Ruby extensions. It wraps [`Benchmark`](https://ruby-doc.org/stdlib-2.2.4/libdoc/benchmark/rdoc/Benchmark.html) and the [`RubyProf`](https://github.com/ruby-prof/ruby-prof) gem.
 
-**Profiling**
-
 ![Profiling in SketchUp](docs/images/profiling.png)
-
-**Benchmarking**
-
-![Benchmarking in SketchUp](docs/images/benchmarking.png)
 
 ## Setup
 
@@ -32,12 +26,6 @@ Maybe `Gem.install('ruby-prof')` will work.
 
 ## Creating performance tests
 
-### Benchmarking
-
-TODO: Refactor how benchmark tests are discovered and menus created.
-
-![Benchmarking in SketchUp](docs/images/benchmarking-menu.png)
-
 ### Profiling
 
 Similar to how you create test units using `Minitest` (Or [TestUp](https://github.com/SketchUp/testup-2) tests), you create profile tests by inheriting from `SpeedUp::ProfileTest`.
@@ -48,7 +36,12 @@ Similar to how you create test units using `Minitest` (Or [TestUp](https://githu
 require 'speedup.rb'
 
 module Example
+  # Put your profile tests in a namespace to allow SpeedUp to discover all
+  # tests related to that namespace.
   module Profiling
+    # The class name is what will be used as the group name for the tests.
+    # PR_ShadowRender will display as "ShadowRender" in the menus
+    # that `SpeedUp.build_menus` generates.
     class PR_ShadowRender < SpeedUp::ProfileTest
 
       def setup
@@ -91,4 +84,12 @@ end # module
 
 Full example: https://github.com/thomthom/shadow-texture/blob/master/profiling/PR_ShadowRender.rb
 
-![Profiling in SketchUp](docs/images/profiling-menu.png)
+![Profiling menus in SketchUp](docs/images/profiling-menu.png)
+
+### Benchmarking
+
+Profiling adds overhead to the code you run. If you want to get a notion of the actual time it takes you can run the profile tests with `Benchmark`.
+
+![Benchmarking menus in SketchUp](docs/images/benchmarking-menu.png)
+
+![Benchmarking in SketchUp](docs/images/benchmarking.png)
