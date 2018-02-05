@@ -21,6 +21,8 @@ module SpeedUp
       }
     end
 
+    # TODO: https://stackoverflow.com/questions/5881474/before-after-suite-when-using-ruby-minitest
+
     def self.run(profile_method)
       instance = self.new
       instance.send(:setup)
