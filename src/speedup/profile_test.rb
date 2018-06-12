@@ -9,8 +9,21 @@ module SpeedUp
       self.name.split('::').last.match(/(?:PR_)?(.+)/)[1]
     end
 
+    # TODO: Move to separate file.
+    # https://stackoverflow.com/a/4079031/486990
+    module NaturalSort
+      def self.sort(enumerable)
+        enumerable.sort_by { |item| self.naturalized(item) }
+      end
+      def self.naturalized(item)
+        string = item.to_s
+        string.scan(/[^\d\.]+|[\d\.]+/).collect { |f| f.match(/\d+(\.\d+)?/) ? f.to_f : f }
+      end
+    end # module
+
     def self.tests
-      public_instance_methods(true).grep(/^profile_/i).sort
+      profile_tests = public_instance_methods(true).grep(/^profile_/i).sort
+      NaturalSort.sort(profile_tests)
     end
 
     def self.each_test_with_name(&block)
