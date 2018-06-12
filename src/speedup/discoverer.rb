@@ -5,8 +5,7 @@ module SpeedUp
 
   # @param [Sketchup::Menu] menu
   # @param [Class, Module] namespace
-  #
-  # @return [Nil]
+  # @return [nil]
   def self.build_menus(menu, namespace)
     profile_klasses = self.discover_profile_classes(namespace)
     profile_klasses.each { |profile_klass|
@@ -21,10 +20,8 @@ module SpeedUp
     nil
   end
 
-
   # @param [Class, Module] namespace
-  #
-  # @return [SpeedUp::ProfileTest]
+  # @return [Array<SpeedUp::ProfileTest>]
   def self.discover_profile_classes(namespace)
     consts = namespace.constants.map { |const|
       namespace.const_get(const)
@@ -33,6 +30,13 @@ module SpeedUp
     klasses.select { |klass|
       klass.ancestors.include?(SpeedUp::ProfileTest)
     }
+  end
+
+  # @param [String] path
+  # @return [Array<String>]
+  def self.load_profile_tests(path)
+    pattern = "#{path}/**/PR_*.rb"
+    Dir.glob(pattern) { |file| load file }
   end
 
 end # module

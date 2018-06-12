@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Benchmarking</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+      .bm-down {
+        color: #3b3;
+      }
+      .bm-up {
+        color: #b33;
+      }
+      .bm-commit {
+        font-size: 75%;
+      }
+      .bm-commit a {
+        color: #35b;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="app" v-cloak>
+
+      <table class="table table-sm table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Profile Name</th>
+          <th scope="col">Build</th>
+          <th scope="col">Time</th>
+          <th scope="col" class="bm-down">Delta</th>
+          <th scope="col">SketchUp</th>
+          <th scope="col">-</th>
+        </tr>
+      </thead>
+      <tbody v-for="testcase in testcases">
+        <tr class="bm_testcase">
+          <th scope="col" colspan="5">{{ testcase.name }}</th>
+          <th scope="col">▼</th>
+        </tr>
+        <template v-for="test in testcase.tests">
+        <tr class="bm_test">
+          <th scope="row">{{ test.name }}</th>
+          <td>
+            <bm-build v-bind:result="test.currentRun"></bm-build>
+          </td>
+          <td scope="col">{{ test.currentRun ? test.currentRun.time : '-' | humanTime }}</td>
+          <td scope="col" v-bind:class="test.currentRun ? test.currentRun.delta : '' | trendClass">
+            {{ test.currentRun ? test.currentRun.delta : '-' | trend }}
+          </td>
+          <td>-</td>
+          <td scope="col">▼</td>
+        </tr>
+        <tr v-for="result in test.results">
+          <td>-</td>
+          <td scope="row">
+            <bm-build v-bind:result="result"></bm-build>
+          </td>
+          <td>{{ result.time | humanTime }}</td>
+          <td v-bind:class="result.delta | trendClass">{{ result.delta | trend }}</td>
+          <td>{{ result.sketchup }}</td>
+          <td>-</td>
+        </tr>
+        </template>
+        </tbody>
+      </table>
+
+  </div><!-- #app -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+      function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+
+      Vue.component('bm-build', {
+        template: `
+          <span>
+          <template v-if="result">
+            {{ result.build.name }}
+            <code class="bm-commit">&lt;<a href="#">{{ result.build.commit }}</a>&gt;</code>
+          </template>
+          <template v-else>
+            -
+          </template>
+          </span>
+        `,
+        props: ['result']
+      });
+
+      Vue.filter('trend', function(value) {
+        if (!isNumeric(value)) return value;
+        let percent = value * 100;
+        let trendArrow = value > 1.0 ? '↑' : '↓';
+        return `${percent.toFixed(1)}% ${trendArrow}`;
+      });
+
+      Vue.filter('trendClass', function(value) {
+        if (!isNumeric(value)) return '';
+        return value > 1.0 ? 'bm-up' : 'bm-down';
+      });
+
+      Vue.filter('humanTime', function(value) {
+        if (!isNumeric(value)) return value;
+        return `${value.toFixed(3)}s`;
+      });
+
+      let app = new Vue({
+        el: '#app',
+        data: {
+          testcases: [
+            {
+              name: "PR_Selection",
+              tests: [
+                {
+                  name: "#profile_radius_0",
+                  currentRun: {
+                    build: { name: "1.2.8", commit: "79d4e11" },
+                    time: 0.534,
+                    delta: 0.48,
+                    sketchup: "SU2018",
+                    timestamp: 0,
+                  },
+                  results: [
+                    {
+                      build: { name: "1.2.8", commit: "79d4e11" },
+                      time: 0.534,
+                      delta: 0.48,
+                      sketchup: "SU2018",
+                      timestamp: 0,
+                    },
+                    {
+                      build: { name: "1.2.8", commit: "79d4e11" },
+                      time: 0.564,
+                      delta: 0.47,
+                      sketchup: "SU2017",
+                      timestamp: 0,
+                    },
+                    {
+                      build: { name: "1.2.7", commit: "68ce809" },
+                      time: 1.248,
+                      delta: 1.24,
+                      sketchup: "SU2018",
+                      timestamp: 0,
+                    },
+                    {
+                      build: { name: "1.2.6", commit: "869256c" },
+                      time: 1.532,
+                      delta: null,
+                      sketchup: "SU2018",
+                      timestamp: 0,
+                    }
+                  ]
+                },
+                {
+                  name: "#profile_radius_250",
+                  results: []
+                },
+                {
+                  name: "#profile_radius_500",
+                  results: [
+                    {
+                      build: { name: "1.2.8", commit: "79d4e11" },
+                      time: 0.534,
+                      delta: 0.48,
+                      sketchup: "SU2018",
+                      timestamp: 0,
+                    },
+                    {
+                      build: { name: "1.2.8", commit: "79d4e11" },
+                      time: 0.564,
+                      delta: 0.47,
+                      sketchup: "SU2017",
+                      timestamp: 0,
+                    }
+                  ]
+                }
+                ,
+                {
+                  name: "#profile_radius_1000",
+                  results: []
+                }
+              ]
+            }
+          ]
+        },
+        methods: {
+          isNumeric: (val) => {
+            return Number(parseFloat(val)) === val;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
