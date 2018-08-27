@@ -62,6 +62,9 @@ module SpeedUp
     def setup; end
     def teardown; end
 
+    def setup_testcase; end
+    def teardown_testcase; end
+
   end # class
 
 end # module
