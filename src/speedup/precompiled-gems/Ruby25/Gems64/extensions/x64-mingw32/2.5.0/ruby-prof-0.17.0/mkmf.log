@@ -1,0 +1,610 @@
+have_func: checking for rb_gc_stat()... -------------------- yes
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return 0;
+8: }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_stat; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_count()... -------------------- yes
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_count; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_remove_event_hook_with_data()... -------------------- yes
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_remove_event_hook_with_data' undeclared (first use in this function); did you mean 'rb_remove_event_hook'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_remove_event_hook_with_data; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                         rb_remove_event_hook
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_remove_event_hook_with_data; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_remove_event_hook_with_data();
+17: int t(void) { rb_remove_event_hook_with_data(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_os_allocated_objects()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_os_allocated_objects' undeclared (first use in this function); did you mean 'rb_extend_object'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~
+                                                         rb_extend_object
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccKQG6fT.o:conftest.c:(.text+0x5): undefined reference to `rb_os_allocated_objects'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_os_allocated_objects();
+17: int t(void) { rb_os_allocated_objects(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_allocated_size()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_allocated_size' undeclared (first use in this function); did you mean 'rb_struct_size'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~~~~
+                                                         rb_struct_size
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccJWAfda.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_allocated_size'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_allocated_size();
+17: int t(void) { rb_gc_allocated_size(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_collections()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_collections' undeclared (first use in this function); did you mean 'rb_gc_mark_locations'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~
+                                                         rb_gc_mark_locations
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccZFWBEu.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_collections'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_collections();
+17: int t(void) { rb_gc_collections(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_time()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_time' undeclared (first use in this function); did you mean 'rb_cTime'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return !p; }
+                                                         ^~~~~~~~~~
+                                                         rb_cTime
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccNgvbPD.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_time'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_time();
+17: int t(void) { rb_gc_time(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_time()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_total_time' undeclared (first use in this function); did you mean 'rb_is_local_id'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_time; return !p; }
+                                                         ^~~~~~~~~~~~~~~~
+                                                         rb_is_local_id
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_time; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccPaYhAY.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_total_time'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_total_time();
+17: int t(void) { rb_gc_total_time(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_mallocs()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_total_mallocs' undeclared (first use in this function); did you mean 'rb_struct_alloc'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_mallocs; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~~~
+                                                         rb_struct_alloc
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_mallocs; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccVMkMV6.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_total_mallocs'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_total_mallocs();
+17: int t(void) { rb_gc_total_mallocs(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_malloced_bytes()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_total_malloced_bytes' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_malloced_bytes; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_malloced_bytes; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccAMyelm.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_total_malloced_bytes'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_total_malloced_bytes();
+17: int t(void) { rb_gc_total_malloced_bytes(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_heap_total_mem()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_heap_total_mem' undeclared (first use in this function); did you mean 'rb_thread_local_aset'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return !p; }
+                                                         ^~~~~~~~~~~~~~~~~
+                                                         rb_thread_local_aset
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccSi5HCK.o:conftest.c:(.text+0x5): undefined reference to `rb_heap_total_mem'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_heap_total_mem();
+17: int t(void) { rb_heap_total_mem(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_heap_info()... -------------------- no
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:16:57: error: 'rb_gc_heap_info' undeclared (first use in this function); did you mean '_heapinfo'?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return !p; }
+                                                         ^~~~~~~~~~~~~~~
+                                                         _heapinfo
+conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return !p; }
+/* end */
+
+"x86_64-w64-mingw32-gcc -o conftest.exe -IC:/Ruby25-x64/include/ruby-2.5.0/x64-mingw32 -IC:/Ruby25-x64/include/ruby-2.5.0/ruby/backward -IC:/Ruby25-x64/include/ruby-2.5.0 -I. -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -march=x86-64 -mtune=generic -O2 -pipe -std=c99 conftest.c  -L. -LC:/Ruby25-x64/lib -L. -pipe -s     -lx64-msvcrt-ruby250  -lgmp -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi  "
+C:\Users\Thomas\AppData\Local\Temp\ccwST1T1.o:conftest.c:(.text+0x5): undefined reference to `rb_gc_heap_info'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+16: extern void rb_gc_heap_info();
+17: int t(void) { rb_gc_heap_info(); return 0; }
+/* end */
+
+--------------------
+
