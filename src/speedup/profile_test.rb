@@ -47,11 +47,13 @@ module SpeedUp
     def self.run(profile_method)
       self.reload
       instance = self.new
+      instance.send(:setup_testcase)
       instance.send(:setup)
       SpeedUp.profile do
         instance.send(profile_method)
       end
       instance.send(:teardown)
+      instance.send(:teardown_testcase)
     end
 
     def self.benchmark
