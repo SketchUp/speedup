@@ -17,6 +17,26 @@ module SpeedUp
     require 'speedup/runner'
   end
 
+  # Only works for RB files - not scrambled RBS version.
+  #
+  # @example
+  #   SpeedUp.reload
+  #
+  # @return [Integer]
+  def self.reload
+    original_verbose = $VERBOSE
+    $VERBOSE = nil
+    # Reload all the Ruby files.
+    files = Dir.glob(File.join(PATH, '**/*.rb')).reject { |file|
+      file.include?('precompiled-gems')
+    }
+    x = files.each { |file|
+      load file
+    }
+    x.length
+  ensure
+    $VERBOSE = original_verbose
+  end
 
   unless file_loaded?(__FILE__)
     menu = UI.menu('Plugins').add_submenu('SpeedUp')
