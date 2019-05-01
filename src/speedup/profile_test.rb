@@ -34,9 +34,18 @@ module SpeedUp
       }
     end
 
+    def self.reload
+      random_profile_method = self.instance_methods.grep(/^profile_/).first
+      path = self.instance_method(random_profile_method).source_location.first
+      load path
+    end
+
     # TODO: https://stackoverflow.com/questions/5881474/before-after-suite-when-using-ruby-minitest
 
+    # TODO: Reload profile test files.
+
     def self.run(profile_method)
+      self.reload
       instance = self.new
       instance.send(:setup)
       SpeedUp.profile do
@@ -46,6 +55,7 @@ module SpeedUp
     end
 
     def self.benchmark
+      self.reload
       instance = self.new
       label_size = tests.map { |t| t.to_s.size }.max
       instance.send(:setup_testcase)
