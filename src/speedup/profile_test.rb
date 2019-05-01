@@ -46,6 +46,7 @@ module SpeedUp
 
     def self.run(profile_method)
       self.reload
+      GC.start # Try to make garbage collection a bit more predictable
       instance = self.new
       instance.send(:setup_testcase)
       instance.send(:setup)
@@ -63,6 +64,7 @@ module SpeedUp
       instance.send(:setup_testcase)
       Benchmark.bm(label_size) do |x|
         self.each_test_with_name { |method, name|
+          GC.start # Try to make garbage collection a bit more predictable
           instance.send(:setup)
           x.report(name) { instance.send(method) }
           instance.send(:teardown)
