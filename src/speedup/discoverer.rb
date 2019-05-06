@@ -27,9 +27,11 @@ module SpeedUp
       namespace.const_get(const)
     }
     klasses = consts.select { |object| object.class == Class }
-    klasses.select { |klass|
+    klasses.select! { |klass|
       klass.ancestors.include?(SpeedUp::ProfileTest)
     }
+    klasses.sort! { |a, b| a.name <=> b.name }
+    klasses
   end
 
   # @param [String] path
