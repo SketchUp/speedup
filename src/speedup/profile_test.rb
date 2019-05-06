@@ -35,9 +35,13 @@ module SpeedUp
     end
 
     def self.reload
+      original_verbose = $VERBOSE
       random_profile_method = self.instance_methods.grep(/^profile_/).first
       path = self.instance_method(random_profile_method).source_location.first
+      $VERBOSE = nil
       load path
+    ensure
+      $VERBOSE = original_verbose
     end
 
     # TODO: https://stackoverflow.com/questions/5881474/before-after-suite-when-using-ruby-minitest
