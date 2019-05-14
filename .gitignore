@@ -38,7 +38,9 @@ xcuserdata
 # Ruby Binaries
 # *.so
 # *.bundle
-# *.o
+
+# Build artifacts.
+*.o
 
 # SketchUp Backup Files
 *.skb
