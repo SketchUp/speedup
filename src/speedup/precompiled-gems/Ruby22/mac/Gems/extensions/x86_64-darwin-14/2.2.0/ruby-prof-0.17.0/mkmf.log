@@ -1,0 +1,580 @@
+have_func: checking for rb_gc_stat()... -------------------- yes
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_stat; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_count()... -------------------- yes
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_count; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_remove_event_hook_with_data()... -------------------- yes
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_remove_event_hook_with_data'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_remove_event_hook_with_data; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_remove_event_hook_with_data; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_remove_event_hook_with_data' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_remove_event_hook_with_data(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_remove_event_hook_with_data(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_os_allocated_objects()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_os_allocated_objects'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_os_allocated_objects; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_os_allocated_objects' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_os_allocated_objects(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_os_allocated_objects", referenced from:
+      _t in conftest-48b703.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_os_allocated_objects(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_allocated_size()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_allocated_size'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_allocated_size; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_allocated_size' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_allocated_size(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_allocated_size", referenced from:
+      _t in conftest-bef523.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_allocated_size(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_collections()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_collections'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_collections; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_collections' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_collections(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_collections", referenced from:
+      _t in conftest-e7da3e.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_collections(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_time()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_time'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_time; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_time' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_time(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_time", referenced from:
+      _t in conftest-dafeef.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_time(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_time()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_total_time'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_time; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_time; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_total_time' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_total_time(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_total_time", referenced from:
+      _t in conftest-d3af71.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_total_time(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_mallocs()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_total_mallocs'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_mallocs; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_mallocs; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_total_mallocs' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_total_mallocs(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_total_mallocs", referenced from:
+      _t in conftest-2f193d.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_total_mallocs(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_total_malloced_bytes()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_total_malloced_bytes'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_malloced_bytes; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_total_malloced_bytes; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_total_malloced_bytes' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_total_malloced_bytes(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_total_malloced_bytes", referenced from:
+      _t in conftest-cfce6a.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_total_malloced_bytes(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_heap_total_mem()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_heap_total_mem'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_heap_total_mem; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_heap_total_mem' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_heap_total_mem(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_heap_total_mem", referenced from:
+      _t in conftest-2dff65.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_heap_total_mem(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_heap_info()... -------------------- no
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_gc_heap_info'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_heap_info; return 0; }
+/* end */
+
+"gcc -o conftest -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/x86_64-darwin15 -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0/ruby/backward -I/Users/tthomas2/.rvm/rubies/ruby-2.2.10/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens  -fno-common -pipe -std=c99 conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib -L. -L/Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_gc_heap_info' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_gc_heap_info(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_gc_heap_info", referenced from:
+      _t in conftest-85a5c9.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_gc_heap_info(); return 0; }
+/* end */
+
+--------------------
+

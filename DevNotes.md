@@ -32,7 +32,17 @@ To trace what RubyProf do, use the `RUBY_PROF_TRACE` environment variable:
 Building gems on Mac leaves the binaries with full path references to the system
 Ruby installation. They need to be updated before SketchUp can use them.
 
+otool -L ruby_prof.bundle 
+
+Ruby 2.5
+
     install_name_tool -change /Users/tthomas2/.rvm/rubies/ruby-2.5.5/lib/libruby.2.5.dylib @executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby ruby_prof.bundle
+
+Ruby 2.2
+
+    install_name_tool -change /Users/tthomas2/.rvm/rubies/ruby-2.2.10/lib/libruby.2.2.0.dylib @executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby ruby_prof.bundle
+
+        install_name_tool -change @executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby @executable_path/../Frameworks/Ruby.framework/Versions/Current/libruby.2.2.0.dylib ruby_prof.bundle 
 
 There is also a copy of the .bundle in the ext/ruby_prof directory along with
 the source code for the binary. This is probably the direct build output and
@@ -48,3 +58,25 @@ System Ruby builds the gem binary into something like
 warning:
 
     Ignoring ruby-prof-0.17.0 because its extensions are not built. Try: gem pristine ruby-prof --version 0.17.0
+
+Looks like it needs to match: RUBY_PLATFORM
+
+SU2019: x86_64-darwin
+SU2018: x86_64-darwin14
+
+x86_64-darwin-14
+
+spec = Gem::Specification.find_by_name('ruby-prof')
+File.exist?(spec.gem_build_complete_path)
+
+Gem::Platform.local.to_s
+
+https://stackoverflow.com/a/2164689/486990
+
+
+/Applications/SketchUp 2018/SketchUp.app/Contents/Frameworks
+/Applications/SketchUp 2019/SketchUp.app/Contents/Frameworks
+
+VT:
+SU2019: @executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby
+SU2018: @executable_path/../Frameworks/Ruby.framework/Versions/Current/libruby.2.2.0.dylib
