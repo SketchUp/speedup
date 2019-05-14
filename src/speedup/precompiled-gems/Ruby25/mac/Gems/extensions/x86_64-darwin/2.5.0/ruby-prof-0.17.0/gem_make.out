@@ -1,0 +1,46 @@
+current directory: /Users/tthomas2/.rvm/gems/ruby-2.5.5/gems/ruby-prof-0.17.0/ext/ruby_prof
+/Users/tthomas2/.rvm/rubies/ruby-2.5.5/bin/ruby -I /Users/tthomas2/.rvm/rubies/ruby-2.5.5/lib/ruby/site_ruby/2.5.0 -r ./siteconf20190514-46450-1gsv0xh.rb extconf.rb
+checking for rb_gc_stat()... yes
+checking for rb_gc_count()... yes
+checking for rb_remove_event_hook_with_data()... yes
+checking for rb_os_allocated_objects()... no
+checking for rb_gc_allocated_size()... no
+checking for rb_gc_collections()... no
+checking for rb_gc_time()... no
+checking for rb_gc_total_time()... no
+checking for rb_gc_total_mallocs()... no
+checking for rb_gc_total_malloced_bytes()... no
+checking for rb_heap_total_mem()... no
+checking for rb_gc_heap_info()... no
+creating Makefile
+
+current directory: /Users/tthomas2/.rvm/gems/ruby-2.5.5/gems/ruby-prof-0.17.0/ext/ruby_prof
+make "DESTDIR=" clean
+
+current directory: /Users/tthomas2/.rvm/gems/ruby-2.5.5/gems/ruby-prof-0.17.0/ext/ruby_prof
+make "DESTDIR="
+compiling rp_call_info.c
+compiling rp_measure.c
+compiling rp_measure_allocations.c
+compiling rp_measure_cpu_time.c
+compiling rp_measure_gc_runs.c
+compiling rp_measure_gc_time.c
+compiling rp_measure_memory.c
+compiling rp_measure_process_time.c
+compiling rp_measure_wall_time.c
+compiling rp_method.c
+compiling rp_stack.c
+compiling rp_thread.c
+compiling ruby_prof.c
+ruby_prof.c:209:9: warning: 'rb_frame_method_id_and_class' is deprecated [-Wdeprecated-declarations]
+        rb_frame_method_id_and_class(&mid, &klass);
+        ^
+/Users/tthomas2/.rvm/rubies/ruby-2.5.5/include/ruby-2.5.0/ruby/backward.h:53:16: note: 'rb_frame_method_id_and_class' has been explicitly marked deprecated here
+DEPRECATED(int rb_frame_method_id_and_class(ID *idp, VALUE *klassp));
+               ^
+1 warning generated.
+linking shared-object ruby_prof.bundle
+
+current directory: /Users/tthomas2/.rvm/gems/ruby-2.5.5/gems/ruby-prof-0.17.0/ext/ruby_prof
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ruby_prof.bundle ./.gem.20190514-46450-1bgpwkz

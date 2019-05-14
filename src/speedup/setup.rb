@@ -18,7 +18,13 @@ module SpeedUp
     precompiled_path = File.join(__dir__, 'precompiled-gems')
     ruby_version = RUBY_VERSION.split('.')[0, 2].join
     ruby_path = File.join(precompiled_path, "Ruby#{ruby_version}")
-    gems_source = File.join(ruby_path, "Gems#{POINTER_SIZE}")
+    platform = Sketchup.platform == :platform_win ? 'win' : 'mac'
+    gems_folder_name = if Sketchup.platform == :platform_win
+      "Gems#{POINTER_SIZE}"
+    else
+      "Gems"
+    end
+    gems_source = File.join(ruby_path, platform, gems_folder_name)
     puts "> Source: #{gems_source} (Exists: #{File.exists?(gems_source)})"
 
     destination = Gem.dir
