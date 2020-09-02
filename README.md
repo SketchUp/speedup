@@ -93,3 +93,18 @@ Profiling adds overhead to the code you run. If you want to get a notion of the 
 ![Benchmarking menus in SketchUp](docs/images/benchmarking-menu.png)
 
 ![Benchmarking in SketchUp](docs/images/benchmarking.png)
+
+## Running from the console
+
+For quick profiling that you don't want to save with the project and run again later, SpeedUp can be used from the Ruby Console.
+
+```ruby
+def fibonacci(number)
+  return number if number == 0
+  return number if number == 1
+
+  fibonacci(number - 1) + fibonacci(number - 2)
+end
+
+SpeedUp.profile { fibonacci(20) }
+```
