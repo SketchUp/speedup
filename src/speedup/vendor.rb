@@ -187,14 +187,16 @@ module SpeedUp
   end
 
   def self.remove_installed_ruby_prof_from_sketchup(verbose: false, noop: false)
+    message = "Uninstall all ruby-prof gems installed in you SketchUp Gems directory?"
+    response = UI.messagebox(message, MB_OKCANCEL)
+    return nil if response == IDCANCEL
+
     if Sketchup.platform == :platform_win && self.load_ruby_prof?
       message = "SpeedUp might not be able to uninstall all versions of ruby-prof "\
         "if it's already loaded. You might have to disable loading of ruby-prof "\
         "and restart SketchUp.\n\nContinue?"
       response = UI.messagebox(message, MB_OKCANCEL)
-      if response == IDCANCEL
-        return nil
-      end
+      return nil if response == IDCANCEL
     end
 
     # C:/Users/tthomas2/AppData/Roaming/SketchUp/SketchUp 2021/SketchUp/Plugins
@@ -210,11 +212,24 @@ module SpeedUp
 
     uninstalled = []
     failed = []
+
     pattern = "#{sketchup_gem_specs_dir}/ruby-prof-*.gemspec"
     Dir.glob(pattern) do |path|
       spec_path = Pathname.new(path)
       begin
-        uninstalled << self.uninstall_gem_from_sketchup(spec_path, verbose: verbose, noop: noop)
+        uninstalled << self.uninstall_gem_from_sketchup(spec_path: spec_path, verbose: verbose, noop: noop)
+      rescue GemUninstallationFailed => error
+        failed << error.message
+        next
+      end
+    end
+
+    # In case there are orphan ruby-spec gem directories.
+    pattern = "#{sketchup_gem_dir}/ruby-prof-*"
+    Dir.glob(pattern) do |path|
+      path = Pathname.new(path)
+      begin
+        uninstalled << self.uninstall_gem_from_sketchup(gem_path: path, verbose: verbose, noop: noop)
       rescue GemUninstallationFailed => error
         failed << error.message
         next
@@ -225,24 +240,43 @@ module SpeedUp
       message = "Errors while uninstalling:\n\n#{failed.join("\n")}"
       UI.messagebox(message)
     end
+
+    unless uninstalled.empty?
+      message = "Uninstalled the following ruby-prof versions:\n\n#{uninstalled.join("\n")}"
+      UI.messagebox(message)
+    end
+
+    if uninstalled.empty? && failed.empty?
+      UI.messagebox("No ruby-prof versions where found.")
+    end
     nil
   end
 
-  def self.uninstall_gem_from_sketchup(spec_path, verbose: false, noop: false)
-    puts spec_path if verbose
-    gem_name = File.basename(spec_path.to_s, '.*')
-    gem_dir = spec_path.parent.parent.join('gems', gem_name)
+  def self.uninstall_gem_from_sketchup(spec_path: nil, gem_path: nil, verbose: false, noop: false)
+    puts "spec_path: #{spec_path}" if verbose
+    puts "gem_path: #{gem_path}" if verbose
+    raise "must provide spec_path or gem_path" if spec_path.nil? && gem_path.nil?
+
+    if spec_path
+      gem_name = File.basename(spec_path.to_s, '.*')
+      gem_dir = spec_path.parent.parent.join('gems', gem_name)
+    else
+      gem_name = gem_path.basename
+      gem_dir = gem_path
+    end
     puts "Uninstalling #{gem_name} from SketchUp gems..." if verbose
+
     unless noop
-      spec_path.delete if spec_path.exist?
+      spec_path.delete if spec_path && spec_path.exist?
       gem_dir.rmtree if gem_dir.exist?
-      if spec_path.file?
+      if spec_path && spec_path.file?
         raise GemUninstallationFailed, "Unable to remove #{spec_path}."
       end
       if gem_dir.directory?
         raise GemUninstallationFailed, "Unable to remove #{gem_dir}."
       end
     end
+
     gem_name
   end
 

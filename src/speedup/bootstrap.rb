@@ -66,7 +66,7 @@ module SpeedUp
 
     develop_menu.add_separator
 
-    develop_menu.add_item('Uninstalled ruby-prof Gems') {
+    develop_menu.add_item('Uninstall ruby-prof Gems') {
       self.remove_installed_ruby_prof_from_sketchup_ui
     }
 
