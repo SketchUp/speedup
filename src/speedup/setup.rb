@@ -30,8 +30,8 @@ module SpeedUp
 
     begin
       puts '> Loading...'
-      Gem.clear_paths
-      gem 'ruby-prof'
+      Gem.clear_paths # Why are we doing this?
+      gem 'ruby-prof' # ...and this?
       require 'ruby-prof'
       require 'speedup/runner'
     ensure

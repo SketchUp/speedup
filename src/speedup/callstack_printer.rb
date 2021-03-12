@@ -28,4 +28,4 @@ module SpeedUp
 
   end #class
 
-end # module
+end if SpeedUp.load_ruby_prof? # module
