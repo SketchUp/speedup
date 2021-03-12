@@ -132,7 +132,7 @@ module SpeedUp
 
     ruby_version = RUBY_VERSION.split('.')
     ruby_name = "Ruby#{ruby_version[0]}#{ruby_version[1]}"
-    vendor_path = Pathname.new(__dir__).join('precompile-gems', ruby_name, 'Gems64')
+    vendor_path = Pathname.new(__dir__).join('precompiled-gems', ruby_name, 'Gems64')
     puts "vendor_path: #{vendor_path}" if verbose
     vendor_path.mkpath unless noop
 
