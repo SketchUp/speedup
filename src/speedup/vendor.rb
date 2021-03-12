@@ -75,6 +75,11 @@ module SpeedUp
       return nil
     end
 
+    message = 'New ruby-prof version vendored into SpeedUp. Manually verify and prune '\
+      'redundant files. (bin, ext for example, as well as binaries unrelated to target '\
+      'SketchUp version).'
+    UI.messagebox(message)
+
     nil
   end
 
