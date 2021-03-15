@@ -1,3 +1,4 @@
+require 'speedup/os'
 require 'speedup/settings'
 
 require 'fileutils'
@@ -19,25 +20,20 @@ module SpeedUp
       return nil
     end
 
-    default_directory = self.read_setting('ruby_directory', 'C:/Ruby27-x64/')
+    system_default_dir = IS_WIN ? 'C:/Ruby27-x64/lib/ruby/gems' : "#{ENV['HOME']}/.rvm/gems"
+    default_directory = self.read_setting('directory', system_default_dir)
 
-    ruby_directory = UI.select_directory(
+    directory = UI.select_directory(
       title: "Select Ruby installation directory",
       directory: default_directory
     )
-    return nil if ruby_directory.nil?
+    return nil if directory.nil?
 
-    self.write_setting('ruby_directory', ruby_directory)
-
-    ruby_executable = File.join(ruby_directory, 'bin', 'ruby.exe')
-    unless File.exist?(ruby_executable)
-      UI.messagebox("Unable to identify Ruby installation at: #{ruby_directory}")
-      return nil
-    end
+    self.write_setting('directory', directory)
 
     puts "Vendoring ruby-prof into SpeedUp..." if verbose
 
-    gems = self.find_installed_ruby_gems(ruby_directory)
+    gems = self.find_installed_ruby_gems(directory)
     gems.sort!
 
     default_gem_name = gems.max.name
@@ -54,7 +50,7 @@ module SpeedUp
 
     begin
       begin
-        self.vendor_new_version(ruby_directory, ruby_prof_gem,
+        self.vendor_new_version(ruby_prof_gem,
           verbose: verbose,
           noop: noop
         )
@@ -63,7 +59,7 @@ module SpeedUp
         response = UI.messagebox(message, MB_YESNO)
         return nil if IDNO
 
-        self.vendor_new_version(ruby_directory, ruby_prof_gem,
+        self.vendor_new_version(ruby_prof_gem,
           override_existing: true,
           verbose: verbose,
           noop: noop
@@ -76,7 +72,7 @@ module SpeedUp
     end
 
     message = 'New ruby-prof version vendored into SpeedUp. Manually verify and prune '\
-      'redundant files. (bin, ext for example, as well as binaries unrelated to target '\
+      'redundant files. ("bin", "test" for example, as well as binaries unrelated to target '\
       'SketchUp version).'
     UI.messagebox(message)
 
@@ -87,17 +83,21 @@ module SpeedUp
     def <=>(other)
       self.version <=> other.version
     end
-  end
+  end # struct
 
   RUBY_PROF_GEMSPEC_VERSION_PATTERN = /ruby-prof-(\d+\.\d+\.\d+).*\.gemspec$/
 
   # @param [String] ruby_directory
-  def self.find_installed_ruby_gems(ruby_directory)
+  def self.find_installed_ruby_gems(gems_directory)
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\cache\ruby-prof-1.4.3-x64-mingw32.gem
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\gems\ruby-prof-1.4.3-x64-mingw32\lib\2.7
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\specifications\ruby-prof-1.4.3-x64-mingw32.gemspec
 
-    pattern = "#{ruby_directory}/lib/ruby/gems/*/specifications/ruby-prof-*.gemspec"
+    # /Users/tthomas2/.rvm/gems/ruby-2.7.2/extensions/x86_64-darwin-19/2.7.0/ruby-prof-1.4.3/ruby_prof.bundle
+    # /Users/tthomas2/.rvm/gems/ruby-2.7.2/gems/ruby-prof-1.4.3
+    # /Users/tthomas2/.rvm/gems/ruby-2.7.2/specifications/ruby-prof-1.4.3.gemspec
+
+    pattern = "#{gems_directory}/specifications/ruby-prof-*.gemspec"
     ruby_prof_spec_paths = Dir.glob(pattern)
 
     ruby_prof_specs = ruby_prof_spec_paths.map { |path|
@@ -119,20 +119,25 @@ module SpeedUp
   class GemInstallationFailed < StandardError; end
   class GemUninstallationFailed < StandardError; end
 
-  # @param [String] ruby_directory
   # @param [RubyProfGem] ruby_prof_gem
   #
   # @raises [GemAlreadyInstalled]
-  def self.vendor_new_version(ruby_directory, ruby_prof_gem,
+  def self.vendor_new_version(ruby_prof_gem,
       override_existing: false,
       noop: false,
       verbose: false)
-    puts "ruby_directory: #{ruby_directory}" if verbose
     puts "ruby_prof_gem: #{ruby_prof_gem}" if verbose
 
     ruby_version = RUBY_VERSION.split('.')
     ruby_name = "Ruby#{ruby_version[0]}#{ruby_version[1]}"
-    vendor_path = Pathname.new(__dir__).join('precompiled-gems', ruby_name, 'Gems64')
+
+    precompiled_path = Pathname.new(__dir__).join('precompiled-gems', ruby_name)
+    vendor_path = if IS_WIN
+      precompiled_path.join('Gems64') # TODO: Move to 'win/Gems64'
+    else
+      precompiled_path.join('mac', 'Gems')
+    end
+
     puts "vendor_path: #{vendor_path}" if verbose
     vendor_path.mkpath unless noop
 
@@ -180,10 +185,64 @@ module SpeedUp
       unless target_gem_dir.directory?
         raise GemInstallationFailed, "#{target_gem_dir} was not installed."
       end
+
+      %w[bin test].each { |sub_path|
+        path = target_gem_dir.join(sub_path)
+        next unless path.directory?
+
+        puts "> remove: #{path} ..." if verbose
+        path.rmtree
+      }
+
+      self.patch_macos_binaries(target_gem_dir) if IS_MAC
     end
 
     puts "#{ruby_prof_gem.name} installed in SketchUp's gem directory." if verbose
 
+    nil
+  end
+
+  SKETCHUP_RUBY_INSTALL_NAME = '@executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby'
+
+  # @param [Pathname] target_gem_dir
+  def self.patch_macos_binaries(target_gem_dir, verbose: self.verbose?, noop: self.noop?)
+    puts "Patching macOS binary (#{target_gem_dir}) ..." if verbose
+    pattern = "#{target_gem_dir}/**/*.bundle"
+    Dir.glob(pattern) { |binary|
+      puts "> Patching #{binary} ..."
+      # TODO:
+      ruby_install_name = self.otool_rubylib_path(binary)
+      self.change_install_name(binary, ruby_install_name, SKETCHUP_RUBY_INSTALL_NAME)
+      new_ruby_install_name = self.otool_rubylib_path(binary)
+      unless new_ruby_install_name == SKETCHUP_RUBY_INSTALL_NAME
+        raise "unable to change the Ruby install name of #{binary} from #{ruby_install_name} to #{SKETCHUP_RUBY_INSTALL_NAME} (#{new_ruby_install_name})"
+      end
+=begin
+
+/Users/tthomas2/SourceTree/speedup/src/speedup/precompiled-gems/Ruby27/mac/Gems/gems/ruby-prof-1.4.3/ext/ruby_prof/ruby_prof.bundle:
+	/Users/tthomas2/.rvm/rubies/ruby-2.7.2/lib/libruby.2.7.dylib (compatibility version 2.7.0, current version 2.7.2)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1252.250.1)
+
+=end
+    }
+  end
+
+  def self.otool_rubylib_path(binary)
+    output = `otool -L "#{binary}"`
+    match = output.match(/^\s+(.+\/libruby\.\d+\.\d+\.dylib)/)
+    if match.nil?
+      match = output.match(/(#{SKETCHUP_RUBY_INSTALL_NAME})/)
+    end
+    match&.captures[0]&.strip
+  end
+
+  def self.change_install_name(binary, original, target)
+    output = `install_name_tool -change #{original} #{target} #{binary}`
+    status = $?
+    unless status.exited?
+      puts output
+      raise "Unable to change install name in #{binary} from #{original} to #{target}"
+    end
     nil
   end
 
@@ -194,7 +253,9 @@ module SpeedUp
   def self.remove_installed_ruby_prof_from_sketchup(verbose: false, noop: false)
     message = "Uninstall all ruby-prof gems installed in you SketchUp Gems directory?"
     response = UI.messagebox(message, MB_OKCANCEL)
+    p response
     return nil if response == IDCANCEL
+    puts "removing old versions..."
 
     if Sketchup.platform == :platform_win && self.load_ruby_prof?
       message = "SpeedUp might not be able to uninstall all versions of ruby-prof "\
@@ -209,7 +270,8 @@ module SpeedUp
     # C:/Users/tthomas2/AppData/Roaming/SketchUp/SketchUp 2021/SketchUp/Gems64/gems/ruby-prof-1.4.2-x64-mingw32
     plugins_dir = Pathname.new(Sketchup.find_support_file('Plugins'))
     sketchup_app_dir = plugins_dir.parent
-    sketchup_gems_root_dir = sketchup_app_dir.join('Gems64')
+    gems_dir_name = IS_WIN ? 'Gems64' : 'Gems'
+    sketchup_gems_root_dir = sketchup_app_dir.join(gems_dir_name)
     sketchup_gem_specs_dir = sketchup_gems_root_dir.join('specifications')
     sketchup_gem_dir = sketchup_gems_root_dir.join('gems')
     puts "sketchup_gem_specs_dir: #{sketchup_gem_specs_dir} (Exists: #{sketchup_gem_specs_dir.exist?})" if verbose
