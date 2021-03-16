@@ -57,7 +57,7 @@ module SpeedUp
       rescue GemAlreadyInstalled
         message = "#{ruby_prof_gem.name} is already vendored into SpeedUp. Remove existing version and install new?"
         response = UI.messagebox(message, MB_YESNO)
-        return nil if IDNO
+        return nil if response == IDNO
 
         self.vendor_new_version(ruby_prof_gem,
           override_existing: true,
@@ -153,21 +153,26 @@ module SpeedUp
     puts "target_gem_spec: #{target_gem_spec} (Exists: #{target_gem_spec.exist?})" if verbose
     puts "target_gem_dir: #{target_gem_dir} (Exists: #{target_gem_dir.exist?})" if verbose
 
-    # if !noop && !override_existing && (target_gem_spec.exist? || target_gem_dir.exist?)
-    #   raise GemAlreadyInstalled
-    # end
-    if target_gem_spec.exist? || target_gem_dir.exist?
+    target_gems_dir = target_gem_spec.parent.parent
+    target_extensions_dir = self.precompiled_extensions_path(target_gems_dir).join(ruby_prof_gem.name)
+    puts "target_extensions_dir: #{target_extensions_dir} (Exists: #{target_extensions_dir.exist?})" if verbose
+
+    if target_gem_spec.exist? || target_gem_dir.exist?|| target_extensions_dir.exist?
       if override_existing
         puts "Removing existing gem..." if verbose
         unless noop
           target_gem_spec.delete if target_gem_spec.exist?
           target_gem_dir.rmtree if target_gem_dir.exist?
+          target_extensions_dir.rmtree if target_extensions_dir.exist?
         end
         if target_gem_spec.file?
           raise GemInstallationFailed, "Unable to remove #{target_gem_spec}."
         end
         if target_gem_dir.directory?
           raise GemInstallationFailed, "Unable to remove #{target_gem_dir}."
+        end
+        if target_extensions_dir.directory?
+          raise GemInstallationFailed, "Unable to remove #{target_extensions_dir}."
         end
       else
         raise GemAlreadyInstalled
@@ -179,13 +184,47 @@ module SpeedUp
       FileUtils.copy_entry(ruby_prof_gem.gemspec.to_s, target_gem_spec.to_s)
       FileUtils.copy_entry(ruby_prof_gem.gem_dir.to_s, target_gem_dir.to_s)
 
+      if IS_MAC
+        puts "Installing extensions directory..." if verbose
+        extensions_dir = ruby_prof_gem.gemspec.parent.parent.join('extensions')
+
+        pattern = "#{extensions_dir}/*/*/#{ruby_prof_gem.name}*"
+        paths = Dir.glob(pattern).to_a
+        raise paths.inspect unless paths.size == 1
+
+        source_extensions_dir = Pathname.new(paths.first)
+        puts "> Source: #{source_extensions_dir}" if verbose
+        puts "> Target: #{target_extensions_dir}" if verbose
+
+        unless source_extensions_dir.directory?
+          raise GemInstallationFailed, "Missing: #{source_extensions_dir}."
+        end
+
+        target_extensions_dir.mkpath
+        FileUtils.copy_entry(source_extensions_dir.to_s, target_extensions_dir.to_s)
+
+        unless target_extensions_dir.directory?
+          raise GemInstallationFailed, "Failed to copy: #{target_extensions_dir}."
+        end
+      end
+
+      # /Users/tthomas2/.rvm/gems/ruby-2.7.2/extensions/x86_64-darwin-19/2.7.0/ruby-prof-1.4.3/ruby_prof.bundle
+      # SU2021.0: x86_64-darwin18
+      # TODO: Copy extensions directory. (macOS only?)
+      # TODO: Account for macOS naming scheme.
+      # TODO: Can ext/ directory be removed afterwards?
+
       unless target_gem_spec.file?
         raise GemInstallationFailed, "#{target_gem_spec} was not installed."
       end
       unless target_gem_dir.directory?
         raise GemInstallationFailed, "#{target_gem_dir} was not installed."
       end
+      unless target_extensions_dir.directory?
+        raise GemInstallationFailed, "#{target_extensions_dir} was not installed."
+      end
 
+      puts "Cleanup redundant directories..." if verbose
       %w[bin test].each { |sub_path|
         path = target_gem_dir.join(sub_path)
         next unless path.directory?
@@ -194,12 +233,22 @@ module SpeedUp
         path.rmtree
       }
 
-      self.patch_macos_binaries(target_gem_dir) if IS_MAC
+      if IS_MAC
+        self.patch_macos_binaries(target_gem_dir, verbose: verbose, noop: noop)
+        self.patch_macos_binaries(target_extensions_dir, verbose: verbose, noop: noop)
+      end
     end
 
     puts "#{ruby_prof_gem.name} installed in SketchUp's gem directory." if verbose
 
     nil
+  end
+
+  def self.precompiled_extensions_path(gems_path)
+    target_platform_name = Gem::Platform.local.to_s
+    x, y, z = RUBY_VERSION.split('.')
+    target_ruby_name = "#{x}.#{y}.0"
+    gems_path.join('extensions', target_platform_name, target_ruby_name)
   end
 
   SKETCHUP_RUBY_INSTALL_NAME = '@executable_path/../Frameworks/Ruby.framework/Versions/Current/Ruby'
@@ -253,9 +302,7 @@ module SpeedUp
   def self.remove_installed_ruby_prof_from_sketchup(verbose: false, noop: false)
     message = "Uninstall all ruby-prof gems installed in you SketchUp Gems directory?"
     response = UI.messagebox(message, MB_OKCANCEL)
-    p response
     return nil if response == IDCANCEL
-    puts "removing old versions..."
 
     if Sketchup.platform == :platform_win && self.load_ruby_prof?
       message = "SpeedUp might not be able to uninstall all versions of ruby-prof "\

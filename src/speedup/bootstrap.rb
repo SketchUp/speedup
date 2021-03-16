@@ -8,11 +8,11 @@ module SpeedUp
 
   if self.load_ruby_prof?
     begin
-      # begin
-      #   gem 'ruby-prof' # Why are we doing this?
-      # rescue LoadError => error
-      #   puts 'Warning: SpeedUp was unable to activate the ruby-prof gem.'
-      # end
+      begin
+        gem 'ruby-prof' # Why are we doing this?
+      rescue LoadError => error
+        puts 'Warning: SpeedUp was unable to activate the ruby-prof gem.'
+      end
       require "ruby-prof"
       puts "SpeedUp loaded RubyProf #{RubyProf::VERSION}" if self.verbose?
     rescue LoadError => error

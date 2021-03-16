@@ -61,15 +61,41 @@ warning:
 
 Looks like it needs to match: RUBY_PLATFORM
 
-SU2019: x86_64-darwin
-SU2018: x86_64-darwin14
-
-x86_64-darwin-14
+SU2021.0: x86_64-darwin18
+SU2020.0: 
+SU2019.0: x86_64-darwin
+SU2018.0: x86_64-darwin14
 
 spec = Gem::Specification.find_by_name('ruby-prof')
 File.exist?(spec.gem_build_complete_path)
 
 Gem::Platform.local.to_s
+
+```
+> RUBY_PLATFORM
+x86_64-darwin18
+
+> spec = Gem::Specification.find_by_name('ruby-prof')
+#<Gem::Specification name=ruby-prof version=1.4.3>
+
+> spec.gem_build_complete_path
+/Users/tthomas2/Library/Application Support/SketchUp 2021/SketchUp/Gems/extensions/x86_64-darwin-18/2.7.0/ruby-prof-1.4.3/gem.build_complete
+
+> Gem::Platform.local.to_s
+x86_64-darwin-18
+
+> spec.extensions
+["ext/ruby_prof/extconf.rb"]
+
+> spec.extension_dir
+/Users/tthomas2/Library/Application Support/SketchUp 2021/SketchUp/Gems/extensions/x86_64-darwin-18/2.7.0/ruby-prof-1.4.3
+
+> spec.require_paths
+["/Users/tthomas2/Library/Application Support/SketchUp 2021/SketchUp/Gems/extensions/x86_64-darwin-18/2.7.0/ruby-prof-1.4.3", "lib"]
+
+> spec.base_dir
+/Users/tthomas2/Library/Application Support/SketchUp 2021/SketchUp/Gems
+```
 
 https://stackoverflow.com/a/2164689/486990
 
