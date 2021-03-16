@@ -62,7 +62,7 @@ warning:
 Looks like it needs to match: RUBY_PLATFORM
 
 SU2021.0: x86_64-darwin18
-SU2020.0: 
+SU2020.0: x86_64-darwin
 SU2019.0: x86_64-darwin
 SU2018.0: x86_64-darwin14
 
