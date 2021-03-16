@@ -282,7 +282,8 @@ module SpeedUp
     if match.nil?
       match = output.match(/(#{SKETCHUP_RUBY_INSTALL_NAME})/)
     end
-    match&.captures[0]&.strip
+    return nil if match.nil? || match.captures[0].nil?
+    match.captures[0].strip
   end
 
   def self.change_install_name(binary, original, target)
