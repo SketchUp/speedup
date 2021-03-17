@@ -21,6 +21,8 @@ module SpeedUp
       merge_fibers: true
     }
     profiler = RubyProf::Profile.new(options)
+    # Eliminate SpeedUp.profile appearing at the top of the call stack.
+    profiler.exclude_singleton_methods!(SpeedUp, :profile)
     begin
       profiler.start
       yield
