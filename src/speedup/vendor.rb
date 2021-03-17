@@ -133,7 +133,7 @@ module SpeedUp
 
     precompiled_path = Pathname.new(__dir__).join('precompiled-gems', ruby_name)
     vendor_path = if IS_WIN
-      precompiled_path.join('Gems64') # TODO: Move to 'win/Gems64'
+      precompiled_path.join('win', 'Gems64')
     else
       precompiled_path.join('mac', 'Gems')
     end
