@@ -204,7 +204,7 @@ module SpeedUp
         FileUtils.copy_entry(source_extensions_dir.to_s, target_extensions_dir.to_s)
 
         unless target_extensions_dir.directory?
-          raise GemInstallationFailed, "Failed to copy: #{target_extensions_dir}."
+          raise GemInstallationFailed, "#{target_extensions_dir} was not installed."
         end
       end
 
@@ -219,9 +219,6 @@ module SpeedUp
       end
       unless target_gem_dir.directory?
         raise GemInstallationFailed, "#{target_gem_dir} was not installed."
-      end
-      unless target_extensions_dir.directory?
-        raise GemInstallationFailed, "#{target_extensions_dir} was not installed."
       end
 
       puts "Cleanup redundant directories..." if verbose
