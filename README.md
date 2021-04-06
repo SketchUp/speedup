@@ -8,8 +8,6 @@ This is a profiling tool for SketchUp Ruby extensions. It wraps [`Benchmark`](ht
 
 ## Setup
 
-### Windows
-
 [RubyProf](https://github.com/ruby-prof/ruby-prof) is a gem that needs to be compiled as it's installed. This prevents it from being installed from within SketchUp under Windows. To compile gems you need the [Ruby DevKit](https://rubyinstaller.org/add-ons/devkit.html) to be configured for the compiler.
 
 Additionally the gem started misbehaving in SketchUp 2017 and up. The profiler isn't able to display the results correctly, thinking there are more threads running. A workaround has been to hack the gem into being single threaded: https://github.com/thomthom/ruby-prof/
@@ -18,11 +16,18 @@ To make it easier for SketchUp extension developers this extension bundles pre-c
 
 `Extensions > SpeedUp > Setup`
 
-### OSX
+### Compatibility / Version Chart
 
-This extension have not been tested under OSX. It does not contain pre-compiled gems for RubyProf for OSX.
+| SketchUp | Ruby | ruby-prof (Win) | ruby-prof (Mac) |
+| --- | --- | --- | --- |
+| SU2021.1+ | 2.7.2+ | 1.4.3 | 1.4.3 |
+| SU2021.0 | 2.7.1 | [bugged](https://bugs.ruby-lang.org/issues/17152) | [bugged](https://bugs.ruby-lang.org/issues/17152) |
+| SU2019.0+ | 2.5+ | 0.17.0 | 1.4.3 |
+| SU2017.0+ | 2.2+ | 0.16.2 | 0.17.0 |
+| SU2014.0+ (64bit) | 2.0+ | 0.16.2 | n/a |
+| SU2014.0+ (32bit) | 2.0+ | 0.15.1 | n/a |
 
-Maybe `Gem.install('ruby-prof')` will work.
+The varying ruby-prof versions for older versions vary due to challenges compiling older versions.
 
 ## Creating performance tests
 
