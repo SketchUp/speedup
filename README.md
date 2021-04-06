@@ -14,7 +14,9 @@ Additionally the gem started misbehaving in SketchUp 2017 and up. The profiler i
 
 To make it easier for SketchUp extension developers this extension bundles pre-compiled versions of RubyProf and will attempt to install it into SketchUp's gems directory.
 
-`Extensions > SpeedUp > Setup`
+`Extensions > Developer > SpeedUp > Setup` (From SketchUp 2021.1)
+
+`Extensions > SpeedUp > Setup`  (Before SketchUp 2021.1)
 
 ### Compatibility / Version Chart
 
