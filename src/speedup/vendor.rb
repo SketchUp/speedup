@@ -33,8 +33,14 @@ module SpeedUp
 
     puts "Vendoring ruby-prof into SpeedUp..." if verbose
 
-    gems = self.find_installed_ruby_gems(directory)
+    gems = self.find_installed_ruby_gems(directory, verbose: verbose)
     gems.sort!
+
+    if gems.empty?
+      message = "Found no ruby-prof gems under: #{directory}"
+      UI.messagebox(message)
+      return
+    end
 
     default_gem_name = gems.max.name
     gem_names = gems.map(&:name).join("|")
@@ -88,7 +94,7 @@ module SpeedUp
   RUBY_PROF_GEMSPEC_VERSION_PATTERN = /ruby-prof-(\d+\.\d+\.\d+).*\.gemspec$/
 
   # @param [String] ruby_directory
-  def self.find_installed_ruby_gems(gems_directory)
+  def self.find_installed_ruby_gems(gems_directory, verbose: false)
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\cache\ruby-prof-1.4.3-x64-mingw32.gem
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\gems\ruby-prof-1.4.3-x64-mingw32\lib\2.7
     # C:\Ruby27-x64\lib\ruby\gems\2.7.0\specifications\ruby-prof-1.4.3-x64-mingw32.gemspec
@@ -99,8 +105,11 @@ module SpeedUp
 
     pattern = "#{gems_directory}/specifications/ruby-prof-*.gemspec"
     ruby_prof_spec_paths = Dir.glob(pattern)
+    puts "find_installed_ruby_gems" if verbose
+    puts "  pattern: #{pattern}" if verbose
 
     ruby_prof_specs = ruby_prof_spec_paths.map { |path|
+      puts path if verbose
       version = path.match(RUBY_PROF_GEMSPEC_VERSION_PATTERN).captures.first
       name = File.basename(path.to_s, '.*')
       spec_file = Pathname.new(path)
