@@ -24,7 +24,7 @@ To make it easier for SketchUp extension developers this extension bundles pre-c
 | --- | --- | --- | --- |
 | SU2021.1+ | 2.7.2+ | 1.4.3 | 1.4.3 |
 | SU2021.0 | 2.7.1 | [bugged](https://bugs.ruby-lang.org/issues/17152) | [bugged](https://bugs.ruby-lang.org/issues/17152) |
-| SU2019.0+ | 2.5+ | 0.17.0 | 1.4.3 |
+| SU2019.0+ | 2.5+ | 1.4.3 | 1.4.3 |
 | SU2017.0+ | 2.2+ | 0.16.2 | 0.17.0 |
 | SU2014.0+ (64bit) | 2.0+ | 0.16.2 | n/a |
 | SU2014.0+ (32bit) | 2.0+ | 0.15.1 | n/a |
