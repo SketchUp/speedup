@@ -50,7 +50,7 @@ module SpeedUp
   end
 
   unless file_loaded?(__FILE__)
-    menu_name = Sketchup.version < 21.1 ? 'Plugins' : 'Developer'
+    menu_name = Sketchup.version.to_f < 21.1 ? 'Plugins' : 'Developer'
     menu = UI.menu(menu_name).add_submenu('SpeedUp')
 
     id = menu.add_item('Setup') {
