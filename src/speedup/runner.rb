@@ -6,6 +6,7 @@ require 'speedup/profile_test'
 
 module SpeedUp
 
+  # @return [UI::WebDialog]
   def self.profile(&block)
     unless defined?(RubyProf)
       message = 'RubyProf not loaded. Please run Extensions > SpeedUp > Setup'
@@ -123,6 +124,119 @@ module SpeedUp
     window.set_file(report)
     window.show
     @windows << window
+    window
+  end
+
+  # @param [Proc] proc1
+  # @param [Proc] proc2
+  def self.compare(proc1, proc2, setup: nil)
+    unless defined?(RubyProf)
+      message = 'RubyProf not loaded. Please run Extensions > SpeedUp > Setup'
+      UI.messagebox(message)
+    end
+
+    options = {
+      merge_fibers: true
+    }
+
+    [proc1, proc2].each_with_index { |proc, i|
+
+      n = i + 1
+      Sketchup.status_text = "Profiling ##{n}..."
+      setup.call if setup
+      profiler = RubyProf::Profile.new(options)
+      # Eliminate SpeedUp.compare appearing at the top of the call stack.
+      profiler.exclude_singleton_methods!(SpeedUp, :compare)
+      begin
+        profiler.start
+        proc.call
+      ensure
+        result = profiler.stop
+      end
+
+      Sketchup.status_text = "Generating callstack report..."
+      callstack_report = File.join(Sketchup.temp_dir, "profup-callstack-#{n}.html")
+      File.open(callstack_report, 'w') { |file|
+        printer = CallStackPrinter.new(result)
+        printer.print(file)
+      }
+
+    }
+
+    callstack_report1 = File.join(Sketchup.temp_dir, "profup-callstack-1.html")
+    callstack_report2 = File.join(Sketchup.temp_dir, "profup-callstack-2.html")
+
+    Sketchup.status_text = "Profiling done!"
+    jquery = File.join(__dir__, "js", "jquery.js")
+    html = <<-EOT
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <script src="#{jquery}"></script>
+      <script>
+      $(document).ready(function() {
+        $('#callstack1, #callstack2').ready(function() {
+          var frame_callstack = $("#callstack")[0];
+          var $callstack = $(frame_callstack.contentDocument);
+          $callstack.find("a[href^='file']").on('click', function() {
+            window.location = "skp:file@" + this.href
+            return false;
+          });
+        });
+
+      });
+      </script>
+    </head>
+    <frameset cols="50%, 50%">
+      <frame src="#{callstack_report1}" name="callstack1" id="callstack1">
+      <frame src="#{callstack_report2}" name="callstack2" id="callstack2">
+    </frameset>
+    </html>
+    EOT
+
+    report = File.join(Sketchup.temp_dir, 'profup-report.html')
+    File.open(report, 'w') { |file|
+      file.puts html
+    }
+
+    options = {
+      :dialog_title => "Profiling Comparisons",
+      :preferences_key => 'SpeedUpComparisonProfiling',
+      :scrollable => true,
+      :resizable => true,
+      :height => 400,
+      :width => 600,
+      :left => 200,
+      :top => 200
+    }
+    @windows ||= Set.new
+    window = UI::WebDialog.new(options)
+    window.add_action_callback("file") { |dialog, params|
+      puts "Callback('file'): #{params}"
+      if params.include?('<main>')
+        puts "Evaluated content. Cannot open file."
+      else
+        file_and_line = params.gsub("file:///", "")
+        puts file_and_line
+        filename, line_number = file_and_line.split('#')
+        puts filename
+        puts line_number
+        editor = "C:/Program Files/Sublime Text 3/sublime_text.exe"
+        command = %["#{editor}" "#{filename}:#{line_number}"]
+        puts command
+        system(command)
+      end
+    }
+    window.set_on_close {
+      # Allow window to be garbage collected.
+      @windows.delete(window)
+      window = nil
+    }
+    window.set_file(report)
+    window.show
+    @windows << window
+    window
   end
 
 end # module
