@@ -11,6 +11,7 @@ module SpeedUp
     profile_klasses.each { |profile_klass|
       klass_menu = menu.add_submenu(profile_klass.test_name)
       klass_menu.add_item('Benchmark') { profile_klass.benchmark }
+      klass_menu.add_item('Benchmark Avg') { profile_klass.benchmark_average }
       klass_menu.add_separator
       profile_instance = profile_klass.new
       profile_klass.each_test_with_name { |method, name|

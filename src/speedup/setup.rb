@@ -12,6 +12,11 @@ module SpeedUp
 
     puts 'Setting up SpeedUp...'
 
+    puts 'Updating Benchmark from gem...'
+
+    Gem.install('benchmark')
+    gem 'benchmark'
+
     puts 'Installing pre-compiled rubo-prof...'
 
     puts '> Checking for compatible version...'
@@ -41,7 +46,7 @@ module SpeedUp
       require 'ruby-prof'
       require 'speedup/runner'
     ensure
-      puts 'Done!'
+      puts 'Done! (You may have to restart SketchUp)'
     end
 
     @setup_done = !defined?(RubyProf).nil?

@@ -1,5 +1,13 @@
+begin
+  gem 'benchmark'
+rescue LoadError => error
+  puts 'Warning: SpeedUp was unable to activate the benchmark gem.'
+end
 require 'benchmark'
+require 'benchmark/version'
+puts "Loaded Benchmark #{Benchmark::VERSION}"
 
+require 'stringio'
 
 module SpeedUp
 
@@ -74,6 +82,91 @@ module SpeedUp
           instance.send(:teardown)
         }
       end
+      instance.send(:teardown_testcase)
+    end
+
+    def self.redirect_stdout
+      original_stdout = $stdout
+      captured_output = StringIO.new
+      $stdout = captured_output
+      yield
+      captured_output
+    ensure
+      $stdout = original_stdout
+    end
+
+    OUTPUT_REGEX = /(.+?)([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)\s+\(\s*([0-9.]+)/
+
+    def self.benchmark_average(iterations: 3)
+      self.reload
+      instance = self.new
+      label_size = tests.map { |t| t.to_s.size }.max
+      outputs = []
+      iterations.times do |i|
+        instance.send(:setup_testcase)
+        output = redirect_stdout do
+          Benchmark.bm(label_size) do |x|
+            self.each_test_with_name { |method, name|
+              GC.start # Try to make garbage collection a bit more predictable
+              instance.send(:setup)
+              x.report(name) { instance.send(method) }
+              instance.send(:teardown)
+            }
+          end
+        end
+        outputs << output.string
+        # puts "output: #{outputs.last.size}"
+        # puts "---"
+        # puts outputs.last
+        # puts "---"
+      end
+
+      results = {}
+      outputs.each { |output|
+        matches = output.scan(OUTPUT_REGEX)
+        matches.each { |match|
+          name, *timing = match
+          name.strip!
+          timing.map!(&:to_f)
+          results[name] ||= []
+          results[name] << timing
+          # p timing
+        }
+      }
+
+      results.each { |name, timings|
+        puts "============================================="
+        puts name
+        puts Benchmark::CAPTION
+        timings.each { |timing|
+          printf("%10.6f %10.6f %10.6f (%10.6f)\n", *timing)
+        }
+        rows = timings.transpose
+
+        puts "---------------------------------------------"
+        puts "min/max"
+        mins = rows.map(&:min)
+        maxs = rows.map(&:max)
+        printf("%10.6f %10.6f %10.6f (%10.6f)\n", *mins)
+        printf("%10.6f %10.6f %10.6f (%10.6f)\n", *maxs)
+
+        puts "---------------------------------------------"
+        puts "mean average"
+        means = rows.map { |row| row.sum / row.size.to_f }
+        printf("%10.6f %10.6f %10.6f (%10.6f)\n", *means)
+
+        puts "---------------------------------------------"
+        puts "standard deviance"
+        # https://www.mathsisfun.com/data/standard-deviation.html
+        variances = rows.map { |row|
+          mean = row.sum / row.size.to_f
+          squared_diffs = row.map { |n| (n - mean)**2 }
+          squared_diffs.sum / squared_diffs.size.to_f
+        }
+        std_deviations = variances.map { |n| Math.sqrt(n) }
+        printf("%10.6f %10.6f %10.6f (%10.6f)\n", *std_deviations)
+      }
+
       instance.send(:teardown_testcase)
     end
 
