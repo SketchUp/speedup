@@ -102,6 +102,11 @@ module SpeedUp
       instance = self.new
       label_size = tests.map { |t| t.to_s.size }.max
       outputs = []
+      # TODO: Allow the test-runner to adjust this.
+      if instance.respond_to?(:benchmark_iterations)
+        iterations = instance.send(:benchmark_iterations)
+      end
+      puts "Benchmarking #{instance.class.test_name} (#{iterations} iterations)..."
       iterations.times do |i|
         instance.send(:setup_testcase)
         output = redirect_stdout do
