@@ -6,6 +6,11 @@ This is a profiling tool for SketchUp Ruby extensions. It wraps [`Benchmark`](ht
 
 ![Profiling in SketchUp](docs/images/profiling.png)
 
+## UI
+The extension adds a new sub-menu at:
+`Extensions > Developer > SpeedUp` (From SketchUp 2021.1)
+`Extensions > SpeedUp` (Before SketchUp 2021.1)
+
 ## Setup
 
 [RubyProf](https://github.com/ruby-prof/ruby-prof) is a gem that needs to be compiled as it's installed. This prevents it from being installed from within SketchUp under Windows. To compile gems you need the [Ruby DevKit](https://rubyinstaller.org/add-ons/devkit.html) to be configured for the compiler.
@@ -14,9 +19,15 @@ Additionally the gem started misbehaving in SketchUp 2017 and up. The profiler i
 
 To make it easier for SketchUp extension developers this extension bundles pre-compiled versions of RubyProf and will attempt to install it into SketchUp's gems directory.
 
+To initialise this process, you need to run the `Setup` command from the sub-menu at:
 `Extensions > Developer > SpeedUp > Setup` (From SketchUp 2021.1)
-
 `Extensions > SpeedUp > Setup`  (Before SketchUp 2021.1)
+
+If you have not run setup, you will see something like this in the Ruby Console:
+```
+Warning: SpeedUp was unable to activate the ruby-prof gem.
+Warning: SpeedUp was unable to load ruby-prof
+```
 
 ### Compatibility / Version Chart
 
