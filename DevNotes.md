@@ -33,7 +33,7 @@ First ensure you have activated the appropriate Ruby version:
 
 #### Windows
 
-    SET PATH=c:\Ruby27-x64\bin;%PATH%
+    SET PATH=c:\Ruby31-x64\bin;%PATH%
     c:\RubyDevKit64\devkitvars.bat
 
 TODO(thomthom): Is `c:\RubyDevKit64\devkitvars.bat` needed if installing via

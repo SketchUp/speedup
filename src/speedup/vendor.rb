@@ -20,7 +20,7 @@ module SpeedUp
       return nil
     end
 
-    system_default_dir = IS_WIN ? 'C:/Ruby27-x64/lib/ruby/gems' : "#{ENV['HOME']}/.rvm/gems"
+    system_default_dir = IS_WIN ? 'C:/Ruby31-x64/lib/ruby/gems/3.1.0' : "#{ENV['HOME']}/.rvm/gems"
     default_directory = self.read_setting('directory', system_default_dir)
 
     directory = UI.select_directory(
