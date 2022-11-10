@@ -6,6 +6,10 @@ This is a profiling tool for SketchUp Ruby extensions. It wraps [`Benchmark`](ht
 
 ![Profiling in SketchUp](docs/images/profiling.png)
 
+## Installation
+There is no RBZ file! Download the ZIP archive of the code from https://github.com/SketchUp/speedup/archive/refs/heads/main.zip
+Inside you will find the `src` folder, this contains the extension structure (`speedup.rb` and `speedup` folder). Manually drop those into your SketchUp Plugins folder(s) and restart SU.
+
 ## UI
 The extension adds a new sub-menu at:
 `Extensions > Developer > SpeedUp` (From SketchUp 2021.1)
