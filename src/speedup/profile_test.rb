@@ -39,7 +39,11 @@ module SpeedUp
       random_profile_method = self.instance_methods.grep(/^profile_/).first
       path = self.instance_method(random_profile_method).source_location.first
       $VERBOSE = nil
-      load path
+      if File.exist?(path)
+        load path
+      else
+        UI.messagebox("Method '#{random_profile_method}' could not be loaded from path #{path.inspect}. Was the code pasted into the Ruby Console?")
+      end
     ensure
       $VERBOSE = original_verbose
     end
