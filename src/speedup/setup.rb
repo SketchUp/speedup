@@ -25,10 +25,10 @@ module SpeedUp
       "Gems"
     end
     gems_source = File.join(ruby_path, platform, gems_folder_name)
-    puts "> Source: #{gems_source} (Exists: #{File.exists?(gems_source)})"
+    puts "> Source: #{gems_source} (Exists: #{File.exist?(gems_source)})"
 
     destination = Gem.dir
-    puts "> Target: #{destination} (Exists: #{File.exists?(destination)})"
+    puts "> Target: #{destination} (Exists: #{File.exist?(destination)})"
 
     puts '> Installing...'
     Sketchup::Console.send(:public, :puts)
