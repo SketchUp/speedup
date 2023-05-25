@@ -37,7 +37,7 @@ First ensure you have activated the appropriate Ruby version:
     c:\RubyDevKit64\devkitvars.bat
 
 TODO(thomthom): Is `c:\RubyDevKit64\devkitvars.bat` needed if installing via
-`gem install`? Or only when trying to build the gem from source?
+`gem install`? Or only when trying to build the gem from source? This might not be relevant any more.
 
 ##### macOS
 
@@ -69,6 +69,7 @@ If you run into errors, check if they are mentioned in this thread: https://gith
 1. `SpeedUp > Develop > Uninstall ruby-prof Gems` This removes old ruby-prof versions from SketchUp's gem directory.
 1. Restart SketchUp (Ensuring that Ruby knows the gems are removed)
 1. `SpeedUp > Develop > Vendor New RubyProof Version` (Follow instructions)
+    With Ruby 3.2 the folder to be chosen was `C:\Users\tthomas2\.gem\ruby\3.2.0`. With older versions it was `C:\Ruby31-x64\lib\ruby\gems\3.1.0`. (Maybe this is related to installing for current user vs all users?)
 1. Check `SpeedUp > Develop > Load ruby-prof`
 1. Restart SketchUp (Makes Ruby pick up the new version so it can be tested that everything works)
 
