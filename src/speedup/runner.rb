@@ -18,8 +18,12 @@ module SpeedUp
     # RubyProf.exclude_threads = Thread.list.select{ |t| t != Thread.current }
     options = {
       # include_threads: [Thread.current],
-      merge_fibers: true
+      # merge_fibers: true
     }
+    # https://github.com/ruby-prof/ruby-prof/commit/dbb0e6f0735d86dc47a8e38b44dfe6f672997c7f
+    # https://github.com/ruby-prof/ruby-prof/issues/271
+    # https://ruby-prof.github.io/#merge-threads
+    options[:merge_fibers] = true if RubyProf::VERSION.to_f <= 1.4
     profiler = RubyProf::Profile.new(options)
     # Eliminate SpeedUp.profile appearing at the top of the call stack.
     profiler.exclude_singleton_methods!(SpeedUp, :profile)
