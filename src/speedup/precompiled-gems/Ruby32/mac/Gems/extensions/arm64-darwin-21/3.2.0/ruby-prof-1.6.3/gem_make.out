@@ -1,0 +1,31 @@
+current directory: /Users/thomasthomassen/.rvm/gems/ruby-3.2.2/gems/ruby-prof-1.6.3/ext/ruby_prof
+/Users/thomasthomassen/.rvm/rubies/ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/thomasthomassen/.rvm/gems/ruby-3.2.2/gems/ruby-prof-1.6.3/ext/ruby_prof
+make DESTDIR\= sitearchdir\=./.gem.20231018-60824-1r9f2o sitelibdir\=./.gem.20231018-60824-1r9f2o clean
+
+current directory: /Users/thomasthomassen/.rvm/gems/ruby-3.2.2/gems/ruby-prof-1.6.3/ext/ruby_prof
+make DESTDIR\= sitearchdir\=./.gem.20231018-60824-1r9f2o sitelibdir\=./.gem.20231018-60824-1r9f2o
+compiling rp_allocation.c
+compiling rp_call_tree.c
+compiling rp_call_trees.c
+compiling rp_measure_allocations.c
+compiling rp_measure_memory.c
+compiling rp_measure_process_time.c
+compiling rp_measure_wall_time.c
+compiling rp_measurement.c
+compiling rp_method.c
+compiling rp_profile.c
+compiling rp_stack.c
+compiling rp_thread.c
+compiling ruby_prof.c
+linking shared-object ruby_prof.bundle
+ld: warning: option -s is obsolete and being ignored
+
+current directory: /Users/thomasthomassen/.rvm/gems/ruby-3.2.2/gems/ruby-prof-1.6.3/ext/ruby_prof
+make DESTDIR\= sitearchdir\=./.gem.20231018-60824-1r9f2o sitelibdir\=./.gem.20231018-60824-1r9f2o install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 ruby_prof.bundle ./.gem.20231018-60824-1r9f2o
+
+current directory: /Users/thomasthomassen/.rvm/gems/ruby-3.2.2/gems/ruby-prof-1.6.3/ext/ruby_prof
+make DESTDIR\= sitearchdir\=./.gem.20231018-60824-1r9f2o sitelibdir\=./.gem.20231018-60824-1r9f2o clean
